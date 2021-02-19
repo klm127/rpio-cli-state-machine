@@ -1,53 +1,60 @@
-from datetime import *
+import time
+import RPi.GPIO as GPIO
 
 
-class LongSwitch:
-    def __init__(self, state, pin, rise, end_after):
+class LongSwitch: # contains logic for variable length button presses
+    def __init__(self, state, pin, rise=GPIO.RISING, pull=GPIO.PUD_UP,end_after = 50):
         self.state = state
         self.pin = pin
-        self.rise = rise
-        self.end_after = end_after
+        self.rise = rise # rise and pull depend on how switch was wired
+        self.pull = pull
+        self.end_after = end_after # how long without input before times are cleared
         self.press_length = 0
         self.times = []
-        # call gpio add event detect - send the press method for callback
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.pin, GPIO.RISING, callback=self.press)
+        GPIO.setwarnings(False)
 
     def remove(self):
-        # call gpio remove event detect
+        GPIO.remove_event_detect(self.pin)
         print(self)
 
     def clear_times(self):
         self.times = []
         self.press_length = 0
 
-    def press(self):
-        now = datetime.now()
-        if len(self.times) != 0:
+    def press(self, ev):
+        print('press event' + str(ev))
+        now = time.time()
+        if len(self.times) > 0:
             since_last = now - self.times[-1]
-            if since_last.total_seconds * 1000 > self.end_after:
+            print(since_last)
+            print(self.end_after)
+            if since_last > self.end_after:
                 self.clear_times()
         self.times.append(now)
-        self.press_length = now - self.times[-1]
+        self.press_length = now - self.times[0]
         ev = {
             "type": 'button-press',
             "pin": self.pin,
             "length": self.press_length
-        }
-        self.state.execute(ev)
+        } # button presses generate this type of object
+        self.state.execute(ev) # state will do something if this object meets a command condition
 
 
-def get_sim_gpio(string):
+def get_sim_gpio(string): # converts "sim 1 1000" to a 1 second input on pin 1
     ar = string.split(' ')
     sim_command = {
-        'type': 'button-press',
+        'type': 'button-press', # GPIO inputs produce this kind of object
         'pin': 0,
         'length': 0
     }
     if len(ar) >= 3:
         try:
-            int(ar[1])
-            sim_command.pin = ar[1]
-            float(ar[2])
-            sim_command.length = ar[2]
+            sim_command['pin'] = int(ar[1])
+            sim_command['length'] = float(ar[2])
         except ValueError:
-            return sim_command
-        return sim_command
+            print('error parsing sim')
+            # returns a 0 length button press on pin 0 if sim command can't parse
+    return sim_command

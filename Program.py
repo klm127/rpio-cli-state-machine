@@ -7,6 +7,7 @@ class Program:
         self.name = "~ State Machine Program ~"
 
     def execute(self, inp):
+        print('executing ' +inp)
         self.state.execute(inp)
 
     def get_input(self):

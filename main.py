@@ -2,4 +2,4 @@ from Program import *
 
 program = Program()
 
-program.execute('cli-mode')
+program.execute('gpio-001')
