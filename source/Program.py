@@ -1,4 +1,5 @@
 import States
+import time
 
 
 class Program:
@@ -14,6 +15,7 @@ class Program:
     -------
     execute(self, inp) : sends input to to active state. Input may be string or other object depending on state
     get_input(self) : gets text input for cli states
+    wait() : waits for 1 second to prevent program from ending
 
     """
 
@@ -33,5 +35,8 @@ class Program:
             exit(69)
         else:
             self.execute(t)
+    
+    def wait(self):
+        time.sleep(100)
 
 

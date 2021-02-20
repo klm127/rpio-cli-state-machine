@@ -64,7 +64,7 @@ class State:
     def send_gpio_state(state, test=''):
         state.program.state = GpioState(state.program)
         state.end_state()
-        state.program.get_input()
+        state.program.wait()
 
     @staticmethod
     def send_gpio_1(state, test=''):
@@ -134,61 +134,59 @@ class TextInputState(InitialState):
         self.program.get_input()
 
 
-class GpioState(TextInputState):
+class GpioState(InitialState):
     """
     A state for handling GPIO input events
 
     Changes program state to a mode which handles GPIO events
-    
+
+    Attributes
+    ----------
+    self.commands : Commands Creates a new Commands object for GPIO
+    self.pins : Dictionary A dictionary where key corresponds to pin and
+        value is the switch type. Only one should be set at any given time.
+
+    Methods
+    -------
+    self.press_cb(self, pin) -> Function 
+        Returns a callback to pass to a new Command object. The 
+        callback returns true if the switch pin matches.
+    self.execute(self, input) : Checks if input is a string and, if it is,
+        prints an error. Otherwise, calls execute_gpio
+    self.execute_gpio(self, input) -> bool: Checks input against commands 
+        and returns true if input matches any command
+
+    Static Methods
+    ------
+    GPIOState.print_switch_info(state, inp) : Used as a callback for a 
+        command. Prints info about the input onto the console.
     """
     def __init__(self, program):
-        TextInputState.__init__(self, program)
+        InitialState.__init__(self, program)
         program.name = '~ State Machine : GPIO Input State ~'
-        # gpiostate has two separate command sections... one for dealing with string calls and one for dealing with button press events sent from LongSwitch
-        self.gpio_commands = Commands(self)
-        self.commands.add(Command(self, State.get_front_check_string_cb('sim'), GpioState.sim_command))
+        self.commands = Commands(self)
         self.pins = {}
-        # maps pins to associated LongSwitch instance
 
-    def long_press_cb(self, pin, press_time, rise=GPIO.RISING, target_press_time=1000, end_after=50):
-        # generates a callback for checking a press event
-        # also initializes LongPress for that pin if it hasn't been yet
-        # if it has been initialized and properties of it have been changed, it changes those properties
-        if pin in self.pins:
-            pin.press_time = press_time
-            pin.rise = rise
-            pin.end_after = end_after
-        else:
-            self.pins[pin] = LongSwitch(self, pin, rise, end_after)
+    def press_cb(self, pin, end_after=5):
+        self.pins[pin] = Switch(self, pin)
 
         def cb(state, test):
-            if test["length"] >= target_press_time:
+            if test["pin"] == pin:
                 return True
             else:
                 return False
         return cb
 
     def execute(self, inp):
-        if type(inp) == str: # if a string, it handles via TextInputState and checks against regular Commands
-            super().execute(inp)
-        else: # if not a string, it handles in a special way
+        if type(inp) == str:
+            print('String input invalid in GPIO state')
+        else: 
             self.execute_gpio(inp)
-
-    def execute_string(self, inp):
-        b = self.commands.check_commands(inp)
-        return b
 
     def execute_gpio(self, inp):
         print('input: ' + str(inp))
-        b = self.gpio_commands.check_commands(inp)
+        b = self.commands.check_commands(inp)
         return b
-
-    #todo: new help function that includes gpio commands
-
-    @staticmethod
-    def sim_command(state, value): # turns a cli command like "sim 1 1000" into an input object representing that button press
-        gpio_sim = get_sim_gpio(value) # from GpioUtil
-        state.execute(gpio_sim)
 
     @staticmethod
     def print_switch_info(state, inp):
@@ -201,7 +199,7 @@ class GpioState1(GpioState):
     def __init__(self, program):
         GpioState.__init__(self, program)
         GPIO.setmode(GPIO.BCM)
-        self.gpio_commands.add(Command(self, self.long_press_cb(21,1000), GpioState.print_switch_info))
+        self.commands.add(Command(self, self.press_cb(21), GpioState.print_switch_info))
 
 
 

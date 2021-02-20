@@ -20,6 +20,6 @@ GPIO.add_event_detect(SWITCH, GPIO.RISING, callback = pressevent)
 
 mytime = datetime.now()
 
-time.sleep(1000)
+time.sleep(5)
 
 print(datetime.now())
