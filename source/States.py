@@ -4,6 +4,35 @@ import RPi.GPIO as GPIO
 
 
 class State:
+    """
+    Parent class for states to extend
+
+    Attributes
+    ----------
+    self.program : Program The Program class where this state is running
+    self.commands : Commands A command object containing available commands in this state
+
+    Methods
+    -------
+    self.execute(self, inp) -> bool : Checks commands to see if input triggers any of them
+    self.end_state(self, inp) : Ends the state by clearing commands
+    self.print_help(self, state, inp) : Called by a command - prints command bindings
+    self.print_status(self) : Prints current program name
+
+    Static Methods
+    --------------
+    Passed as callbacks in effect parameter on Command creation
+
+    State.send_initial_state(state, test='') : Sets program instance's active state to an InitialState instance
+    State.send_text_state(state, test='') : Sets program state to Text input state
+    State.send_gpio_state(state, test='') : Sets program state to base GPIO state
+    State.send_gpio_1(state, test='') : Sets program state to GPIO 1 state
+    State.get_check_str_cb(target_str : str) - > Function :
+        Returns a callback that will evaluate a test string against a target string
+    State.get_front_check_str_cb(target_str : str) -> Function :
+        Returns a callback that will evaluate the front of a string against a target string
+
+    """
 
     def __init__(self, program):
         self.program = program
@@ -67,7 +96,14 @@ class State:
         return cb
 
 
-class InitialState(State): # just adds two more commands - gpio-001 and cli-mode
+class InitialState(State):
+    """
+    The initial program state
+
+    Same as state, but adds two commands, one for changing Program state
+    to cli-mode (TextInputState) and one for changing program state to
+    GpioState1
+    """
 
     def __init__(self, program):
         State.__init__(self, program)
@@ -75,14 +111,21 @@ class InitialState(State): # just adds two more commands - gpio-001 and cli-mode
         self.commands.add(Command(self, State.get_check_string_cb("gpio-001"), State.send_gpio_1,'gpio-001'))
 
 class TextInputState(InitialState):
+    """
+    A CLI type state
 
+    Creates a gpio-mode command and changes program.name
+
+    Methods
+    -------
+    self.execute(self, inp) : overwrites State.execute. As parent,
+    checks commands, but also prints an error if a command is not
+    recognized and calls program.get_input(), causing the cli to loop.
+    """
     def __init__(self, program):
         InitialState.__init__(self, program)
         self.commands.add(Command(self, State.get_check_string_cb("gpio-mode"), State.send_gpio_state, 'gpio-mode'))
         program.name = '~ State Machine : Text Input State ~'
-
-    def end_state(self):
-        super().end_state()
 
     def execute(self, inp): # besides executing command, calls get_input() in program to keep it looping for more commands
         b = self.commands.check_commands(inp)
@@ -92,6 +135,12 @@ class TextInputState(InitialState):
 
 
 class GpioState(TextInputState):
+    """
+    A state for handling GPIO input events
+
+    Changes program state to a mode which handles GPIO events
+    
+    """
     def __init__(self, program):
         TextInputState.__init__(self, program)
         program.name = '~ State Machine : GPIO Input State ~'

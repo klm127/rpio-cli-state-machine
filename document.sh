@@ -1,0 +1,1 @@
+/home/pi/.local/bin/sphinx-apidoc -o documentation source

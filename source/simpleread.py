@@ -2,6 +2,11 @@ import RPi.GPIO as GPIO
 from datetime import *
 import time
 
+"""
+Just a script for testing Rpi.GPIO, not really part of this library
+
+"""
+
 SWITCH = 21
 
 GPIO.setwarnings(False)
