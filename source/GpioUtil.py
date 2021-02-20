@@ -7,8 +7,7 @@ class Switch:
     Attached to a switch by a GPIO state
 
     Sets the switch to 'variable length' whereby every press will be 
-    sent to state.program.execute. Tracks length of press and zeros 
-    that length when no input detected for end_after seconds.
+    sent to state.program.execute. 
 
     Attributes
     ----------
@@ -28,23 +27,21 @@ class Switch:
         self.state = state
         self.pin = pin
         self.last_press_time = 0
+        self.activate()
+
+    def activate(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(self.pin, GPIO.RISING, callback = self.press, bouncetime=100)
         GPIO.setwarnings(False)
 
-    def remove(self):
+    def deactivate(self):
         GPIO.remove_event_detect(self.pin)
-        print(self)
-
-    def clear_times(self):
-        self.times = []
-        self.press_length = 0
 
     def press(self, ev):
         print('press event on ' + str(ev))
         start = time.time()
-        while GPIO.input(self.pin) == 0:
+        while GPIO.input(self.pin) == 0: # another time check here could handle falling bounce times
             pass
         end = time.time()
         self.last_press_time = end-start
@@ -54,3 +51,27 @@ class Switch:
             "length": self.last_press_time
         }
         self.state.execute(ev)
+
+class Led:
+    """
+    A class for controlling LEDS
+
+    Sets mode to output on initialization
+
+    Methods
+    ------
+    on(self) : turns LED on
+    off(self) : turns LED off
+    """
+    def __init__(self, pin):
+        self.pin = pin
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.pin, GPIO.OUT)
+        GPIO.output(self.pin, GPIO.HIGH)
+
+    def on(self):
+        GPIO.output(self.pin, GPIO.LOW)
+    
+    def off(self):
+        GPIO.output(self.pin, GPIO.HIGH)
+

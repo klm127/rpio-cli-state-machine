@@ -55,7 +55,7 @@ class State:
         state.end_state()
 
     @staticmethod
-    def send_text_state(state, test=''): # sends new state to program - this would be mapped to "effect" callback of a command. I.e. "cli-mode" changes the state to text-input
+    def send_text_state(state, test=''): 
         state.program.state = TextInputState(state.program)
         state.end_state()
         state.program.get_input()
@@ -67,8 +67,16 @@ class State:
         state.program.wait()
 
     @staticmethod
-    def send_gpio_1(state, test=''):
-        state.program.state = GpioState1(state.program)
+    def send_gpio_10_press(state, test=''):
+        switch = 21
+        led = 19
+        testArr = test.split(' ')
+        try:
+            switch = int(testArr[1])
+            led = int(testArr[2])
+        except:
+            pass
+        state.program.state = GpioState_10_press(state.program, switch, led)
         state.end_state()
         state.program.get_input()
 
@@ -86,7 +94,7 @@ class State:
         return cb
 
     @staticmethod
-    def get_front_check_string_cb(target_str): # creates a callback for use with Command that checks to see if a tested input string matches at the beginning (but not necessarily all the way)
+    def get_front_check_string_cb(target_str): 
         def cb(state, test_str):
             chunk = test_str[0:len(target_str)]
             if chunk == target_str:
@@ -102,13 +110,13 @@ class InitialState(State):
 
     Same as state, but adds two commands, one for changing Program state
     to cli-mode (TextInputState) and one for changing program state to
-    GpioState1
+    Gpio_10_press
     """
 
     def __init__(self, program):
         State.__init__(self, program)
         self.commands.add(Command(self, State.get_check_string_cb("cli-mode"), State.send_text_state, 'cli-mode'))
-        self.commands.add(Command(self, State.get_check_string_cb("gpio-001"), State.send_gpio_1,'gpio-001'))
+        self.commands.add(Command(self, State.get_front_check_string_cb("gpio-10-press"), State.send_gpio_10_press,'gpio-10-press'))
 
 class TextInputState(InitialState):
     """
@@ -118,7 +126,7 @@ class TextInputState(InitialState):
 
     Methods
     -------
-    self.execute(self, inp) : overwrites State.execute. As parent,
+    self.execute(self, inp) : overwrites State.execute. As super,
     checks commands, but also prints an error if a command is not
     recognized and calls program.get_input(), causing the cli to loop.
     """
@@ -152,9 +160,7 @@ class GpioState(InitialState):
         Returns a callback to pass to a new Command object. The 
         callback returns true if the switch pin matches.
     self.execute(self, input) : Checks if input is a string and, if it is,
-        prints an error. Otherwise, calls execute_gpio
-    self.execute_gpio(self, input) -> bool: Checks input against commands 
-        and returns true if input matches any command
+        prints an error. Otherwise, checks commands
 
     Static Methods
     ------
@@ -178,14 +184,11 @@ class GpioState(InitialState):
         return cb
 
     def execute(self, inp):
+        b = False
         if type(inp) == str:
             print('String input invalid in GPIO state')
         else: 
-            self.execute_gpio(inp)
-
-    def execute_gpio(self, inp):
-        print('input: ' + str(inp))
-        b = self.commands.check_commands(inp)
+            b = self.commands.check_commands(inp)
         return b
 
     @staticmethod
@@ -195,11 +198,43 @@ class GpioState(InitialState):
         print(str(inp))
 
 
-class GpioState1(GpioState):
-    def __init__(self, program):
+class GpioState_10_press(GpioState):
+    """
+    10 press flash state
+
+    This state sets up a button and an LED. Button press lengths are recorded. When 10
+    button presses are logged, the LED flashes 10 times for those lengths, with a 1
+    second delay between flashes.
+    """
+    def __init__(self, program, switch, led):
         GpioState.__init__(self, program)
-        GPIO.setmode(GPIO.BCM)
-        self.commands.add(Command(self, self.press_cb(21), GpioState.print_switch_info))
+        self.light_times = []
+        self.lighting = False
+        self.flasher = Led(led)
+        self.commands.add(Command(self, self.press_cb(switch), GpioState_10_press.light_time_append))
+
+    @staticmethod
+    def light_time_append(state, inp):
+        print('appending light time #'+str(len(state.light_times))+" : " + str(inp["length"]))
+        if len(state.light_times) < 10:
+            state.light_times.append(inp["length"])
+        else:
+            state.flash_light(inp)
+
+    def flash_light(self,inp):
+        print('Flashing!')
+        switch = self.pins[inp["pin"]]
+        switch.deactivate()
+        while len(self.light_times) > 0:
+            flash_time = self.light_times.pop(0)
+            self.flasher.on()
+            time.sleep(flash_time)
+            self.flasher.off()
+            time.sleep(1)
+        switch.activate()
+        print('Done Flashing.')
+
+    
 
 
 

@@ -9,4 +9,4 @@ from Program import Program
 
 program = Program()
 
-program.execute('gpio-001')
+program.execute('gpio-10-press 21 19')
