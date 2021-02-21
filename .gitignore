@@ -1,2 +1,4 @@
 *.pyc
-source/*.pyc
+s-old
+__pycache__
+src/__pycache__

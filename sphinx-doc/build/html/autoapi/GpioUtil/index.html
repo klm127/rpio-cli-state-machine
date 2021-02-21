@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GpioUtil &#8212; rpio-cli-state-machine 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-GpioUtil">
+<span id="gpioutil"></span><h1><a class="reference internal" href="#module-GpioUtil" title="GpioUtil"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GpioUtil</span></code></a><a class="headerlink" href="#module-GpioUtil" title="Permalink to this headline">¶</a></h1>
+<p>Utility classes for interfacing with the RPi.GPIO library on a Raspberry Pi.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#GpioUtil.Switch" title="GpioUtil.Switch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Switch</span></code></a></p></td>
+<td><p>A class to wrap a GPIO input event as triggered by a simple switch.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#GpioUtil.Led" title="GpioUtil.Led"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Led</span></code></a></p></td>
+<td><p>A class for controlling LEDS by changing corresponding GPIO outputs.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="GpioUtil.Switch">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">GpioUtil.</span></code><code class="sig-name descname"><span class="pre">Switch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Switch" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to wrap a GPIO input event as triggered by a simple switch.</p>
+<p>Sets up a GPIO PUD_UP Rising switch and adds a GPIO event handler to it. When the event handler is triggered by a switch event (bouncetime 100ms), it calls <a href="#id1"><span class="problematic" id="id2">:method:`self.press`</span></a>. Press waits for input to drop, then sends a dictionary to the state containing information about the pin location and the length of the press.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>class State</em>) – The containing state object.</p></li>
+<li><p><strong>pin</strong> (<em>int</em>) – The GPIO pin in BCM numbering which is sending current to the switch.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="GpioUtil.Switch.activate">
+<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Switch.activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called on initialization. Sets mode to GPIO.BCM and calls related GPIO functions to set up the switch. Adds an event detect with GPIO for GPIO.RISING events with a bouncetime of 100.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="GpioUtil.Switch.deactivate">
+<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Switch.deactivate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls GPIO.remove_event_detect on this pin to deactivate it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="GpioUtil.Switch.press">
+<code class="sig-name descname"><span class="pre">press</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ev</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Switch.press" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback given to GPIO event detector. Gets the length of time the switch is active for, then creates an event dictionary with the following properties:</p>
+<ul class="simple">
+<li><p>‘type’: ‘button-press’</p></li>
+<li><p>‘pin’: an integer corresponding to the BCM pin number the switch is wired to; <cite>self.pin</cite></p></li>
+<li><p>‘length’: A float representing the time in seconds which the switch was active</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ev</strong> (<em>int</em>) – The GPIO pin (BCM) on which a GPIO.RISING edge was detected</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="GpioUtil.Led">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">GpioUtil.</span></code><code class="sig-name descname"><span class="pre">Led</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Led" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for controlling LEDS by changing corresponding GPIO outputs.</p>
+<p>Sets mode to output on initialization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pin</strong> (<em>int</em>) – A BCM-numbered GPIO pin wired to from the negative lead of the LED to ground.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="GpioUtil.Led.on">
+<code class="sig-name descname"><span class="pre">on</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Led.on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns on LED by setting GPIO.LOW on <cite>self.pin</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="GpioUtil.Led.off">
+<code class="sig-name descname"><span class="pre">off</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Led.off" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns off LED by setting GPIO.HIGH on <cite>self.pin</cite></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">rpio-cli-state-machine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, klm127.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/autoapi/GpioUtil/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,36 @@
+:mod:`simpleread`
+=================
+
+.. py:module:: simpleread
+
+.. autoapi-nested-parse::
+
+   Just a script for sanity-checking Rpi.GPIO, not really part of this library
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   simpleread.pressevent
+
+
+.. data:: SWITCH
+   :annotation: = 21
+
+   
+
+.. function:: pressevent(time)
+
+
+.. data:: mytime
+   
+
+   
+

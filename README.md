@@ -16,7 +16,8 @@ A program that uses RPi-GPIO inputs can be written by extending `GpioState`.
 
 ### Created for Systems Fundamentals with Professor Egelstein by Karl Miller, Feb 2021
 
+For docs:
 
-- run Makefile to build the docs
-- i.e. make builder
-- where "builder" is one of the supported builders, like html, latex, or linkcheck
+- run `sphinx-doc/make.bat` with Sphinx on the path
+
+

@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program &#8212; rpio-cli-state-machine 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-Program">
+<span id="program"></span><h1><a class="reference internal" href="#module-Program" title="Program"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Program</span></code></a><a class="headerlink" href="#module-Program" title="Permalink to this headline">¶</a></h1>
+<p>Class for managing the active state.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#Program.Program" title="Program.Program"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Program</span></code></a></p></td>
+<td><p>Holds current state and sends execution to that state.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="Program.Program">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">Program.</span></code><code class="sig-name descname"><span class="pre">Program</span></code><a class="headerlink" href="#Program.Program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds current state and sends execution to that state.</p>
+<p>On initialization, sets <cite>self.state</cite> to an instance of <cite>States.InitialState(self)</cite></p>
+<dl class="py method">
+<dt id="Program.Program.execute">
+<code class="sig-name descname"><span class="pre">execute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Program.Program.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends an input event to a state for execution and prints that event. Called by states to ensure executions are always sent to the active state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inp</strong> (<em>str | dict</em>) – Input, possibly from CLI, possibly from another source</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Program.Program.get_input">
+<code class="sig-name descname"><span class="pre">get_input</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Program.Program.get_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets text input for use with cli-type states. Calls <cite>print_status()</cite> on the current state which usually just prints <cite>ProgramInstance.name</cite>. Checks if text input is “exit” and, if it is, exits the program. Otherwise, sends input to the active state to execute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Program.Program.wait">
+<code class="sig-name descname"><span class="pre">wait</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Program.Program.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>debug method</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">rpio-cli-state-machine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, klm127.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/autoapi/Program/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
