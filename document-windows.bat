@@ -1,4 +1,4 @@
 cd sphinx-doc
-make html
+call make.bat html
 cd ..
-Xcopy /E /I .\sphinx-doc\build\html .\doc
+Xcopy /E /I .\sphinx-doc\build\html .\docs /y

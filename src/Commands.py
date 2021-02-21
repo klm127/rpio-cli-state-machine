@@ -64,9 +64,9 @@ class Commands:
 
     def add(self, command):
         """
-        Adds a command to `self.commands`
+        Adds a `Command` to `self.commands`
         
-        :param command: A Command to append to `self.commands`
+        :param command: A `Command` to append to `self.commands`
         :type command: class Command
         
         """
@@ -74,10 +74,11 @@ class Commands:
 
     def to_string(self): # for "help" cli command - prints bindings
         """
-        Provides a string listing Command bindings and their name, separated by a newline.
+        Provides a string listing `Command` bindings and their names, separated by newlines.
         
         :returns: Information about available commands.
         :rtype str:
+
         """
         s = ''
         for c in self.commands:

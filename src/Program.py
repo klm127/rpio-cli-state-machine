@@ -40,11 +40,3 @@ class Program:
             exit(69)
         else:
             self.execute(t)
-    
-    def wait(self):
-        """
-        debug method
-        """
-        time.sleep(100)
-
-
