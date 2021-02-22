@@ -21,6 +21,7 @@ Static methods in `State` generate callbacks to pass to a `Command` object on cr
    
    about
    usage
+   umlDiagram
 
 
 Indices and tables

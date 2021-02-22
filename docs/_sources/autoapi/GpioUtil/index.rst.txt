@@ -27,7 +27,7 @@ Classes
 
    A class to wrap a GPIO input event as triggered by a simple switch.
 
-   Sets up a GPIO PUD_UP Rising switch and adds a GPIO event handler to it. When the event handler is triggered by a switch event (bouncetime 100ms), it calls :method:`self.press`. Press waits for input to drop, then sends a dictionary to the state containing information about the pin location and the length of the press.
+   Sets up a GPIO PUD_UP Rising switch and adds a GPIO event handler to it. When the event handler is triggered by a switch event (bouncetime 100ms), it calls `self.press`. Press waits for input to drop, then sends a dictionary to the state containing information about the pin location and the length of the press.
 
    :param state: The containing state object.
    :type state: class State

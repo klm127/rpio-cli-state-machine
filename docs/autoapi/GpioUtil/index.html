@@ -87,6 +87,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
 </ul>
 
@@ -180,7 +181,7 @@
 <dt id="GpioUtil.Switch">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">GpioUtil.</span></code><code class="sig-name descname"><span class="pre">Switch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GpioUtil.Switch" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class to wrap a GPIO input event as triggered by a simple switch.</p>
-<p>Sets up a GPIO PUD_UP Rising switch and adds a GPIO event handler to it. When the event handler is triggered by a switch event (bouncetime 100ms), it calls <a href="#id1"><span class="problematic" id="id2">:method:`self.press`</span></a>. Press waits for input to drop, then sends a dictionary to the state containing information about the pin location and the length of the press.</p>
+<p>Sets up a GPIO PUD_UP Rising switch and adds a GPIO event handler to it. When the event handler is triggered by a switch event (bouncetime 100ms), it calls <cite>self.press</cite>. Press waits for input to drop, then sends a dictionary to the state containing information about the pin location and the length of the press.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
