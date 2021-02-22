@@ -12,7 +12,9 @@ Callbacks are passed the `State` where the command was executed and can access t
 
 A program that uses RPi-GPIO inputs can be written by extending `GpioState`.
 
+## Documentation
 
+[Documentation](https://www.quaffingcode.com/rpio-cli-state-machine/index.html)
 
 ### Created for Systems Fundamentals with Professor Egelstein by Karl Miller, Feb 2021
 
