@@ -16,14 +16,14 @@ class Display:
         for row_num in range(0, 2):
             row = []
             for col in range(0, 28):
-                row.append('.')
+                row.append(' ')
             self.rows.append(row)
         self.printer = ConsolePrinter()
 
     def blank(self):
         for r in self.rows:
             for c in range(0, len(r)):
-                r[c] = '.'
+                r[c] = ' '
 
     def print(self):
         """

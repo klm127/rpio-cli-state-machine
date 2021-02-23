@@ -1,0 +1,79 @@
+:mod:`src.Game.GameProgram`
+===========================
+
+.. py:module:: src.Game.GameProgram
+
+.. autoapi-nested-parse::
+
+   Handles game loops, key presses, and shutting down.
+
+   Holds the active state.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.GameProgram.GameProgram
+
+
+
+.. class:: GameProgram(display)
+
+
+   Bases: :class:`src.StateMachine.Program.Program`
+
+   Extends program, adding looping threads that call GameState.update()
+
+   Also reads keyboard input with pynput. Sends key presses to program.execute()
+
+   .. method:: update(self, interval)
+
+      Called by game thread, just calls update on self.state.
+
+
+   .. method:: get_game_thread_cb(game_program)
+      :staticmethod:
+
+      Callback to get a game thread.
+
+      Returns a function to attach to a game thread. Game thread should not be a daemon.
+      The game thread loops while program.running is true.
+      If the time since last update exceeds program.frame_rate, thread calls program.update(time interval).
+
+      :param game_program: calling GameProgram
+      :type game_program: class GameProgram
+      :returns: A function for threading.Thread(target=...)
+      :rtype: Function
+
+
+   .. method:: end_program(self)
+
+      Ends the program by closing threads.
+
+
+   .. method:: on_key_cb(program, key_type)
+      :staticmethod:
+
+      return callback passed to pynput keyboard listener.
+
+      Builds a dictionary based on key presses / releases and sends
+      that dictionary to program.execute when a key press is read.
+
+      Called twice, once to get a callback for key presses, once to
+      get a callback for key releases.
+
+      :param program: Program where key presses are read.
+      :type program: class GameProgram
+      :param key_type: Either 'press' or 'release'
+      :type key_type: str
+      :returns: A callback to pass to keyboard.Listener of pynput
+      :rtype: Function
+
+
+

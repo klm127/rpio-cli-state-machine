@@ -158,8 +158,10 @@
             
   <section id="module-src.Game.GameStates">
 <span id="src-game-gamestates"></span><h1><a class="reference internal" href="#module-src.Game.GameStates" title="src.Game.GameStates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.GameStates</span></code></a><a class="headerlink" href="#module-src.Game.GameStates" title="Permalink to this headline">¶</a></h1>
-<p>Game Parent State</p>
-<p>listens to keyboard inputs</p>
+<p>Game State</p>
+<p>Holds a list of game objects. Updates them when program tells state to update
+as looping continues.</p>
+<p>Handles keyboard input commands as sent by GameProgram.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -171,7 +173,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameStates.Game" title="src.Game.GameStates.Game"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Game</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Parent game state.</p></td>
 </tr>
 </tbody>
 </table>
@@ -182,23 +184,18 @@
 
 <dl class="py class">
 <dt id="src.Game.GameStates.Game">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameStates.</span></code><code class="sig-name descname"><span class="pre">Game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameStates.</span></code><code class="sig-name descname"><span class="pre">Game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../StateMachine/States/index.html#src.StateMachine.States.State" title="src.StateMachine.States.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.StateMachine.States.State</span></code></a></p>
-<dl class="py method">
-<dt id="src.Game.GameStates.Game.get_game_thread_cb">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">get_game_thread_cb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.get_game_thread_cb" title="Permalink to this definition">¶</a></dt>
-<dd><p>Callback to get game thread</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> (<em>class State</em>) – calling state</p>
-</dd>
-</dl>
-</dd></dl>
-
+<p>Parent game state.</p>
+<p>Updates game objects and holds commands to change features of state.</p>
 <dl class="py method">
 <dt id="src.Game.GameStates.Game.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called by game thread, updates as needed</p>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by game thread.</p>
+<p>Blanks display, then calls update on each game object.
+Then calls display.print to display.
+:param interval: The time since last update.
+:type interval: float</p>
 </dd></dl>
 
 <dl class="py method">
@@ -223,28 +220,18 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="src.Game.GameStates.Game.on_key_cb">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">on_key_cb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.on_key_cb" title="Permalink to this definition">¶</a></dt>
-<dd><p>return callback passed to pynput keyboard listener</p>
-<p>Not for giving to Command callbacks</p>
+<dt id="src.Game.GameStates.Game.print_key_info">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">print_key_info</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.print_key_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debug method for Command callbacks.</p>
+<p>Prints the key pressed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>state</strong> (<em>class State</em>) – state context to get execution</p></li>
-<li><p><strong>key_type</strong> (<em>str</em>) – Either ‘press’ or ‘release’</p></li>
+<li><p><strong>state</strong> (<em>class State</em>) – Calling state, passed by Command</p></li>
+<li><p><strong>inp</strong> (<em>dict</em>) – input</p></li>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="src.Game.GameStates.Game.print_key_info">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">print_key_info</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.print_key_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Debug method for Command callbacks
-:param state: Calling state, passed by Command
-:type state: class State
-:param inp: input
-:type inp: dict</p>
 </dd></dl>
 
 <dl class="py method">

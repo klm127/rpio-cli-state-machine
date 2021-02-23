@@ -1,9 +1,5 @@
-from src.StateMachine import *
-from src.Game import *
+from src.Game import GameStart, GameProgram, Display
 
-import time
-from pynput import keyboard
-
-program = Program.Program()
-print(program)
-program.load_state(GameStart.GameStart(program))
+display = Display.Display()
+program = GameProgram.GameProgram(display)
+program.load_state(GameStart.GameStart(program, display))

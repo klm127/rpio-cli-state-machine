@@ -19,9 +19,7 @@ Classes
 
    src.Game.GameObject.GameObject
    src.Game.GameObject.VisibleObject
-   src.Game.GameObject.TestRightMover
-   src.Game.GameObject.TextScroll
-   src.Game.GameObject.Spinner
+   src.Game.GameObject.AnimatedObject
 
 
 
@@ -38,8 +36,6 @@ Classes
    :type y: int
    :param width: the width
    :type width: int
-   :param height: the height
-   :type height: int
 
    .. method:: up(self, num=1)
 
@@ -56,17 +52,21 @@ Classes
    .. method:: place(self, display)
 
 
-   .. method:: update(self, state)
+   .. method:: update(self, state, interval)
 
 
 
-.. class:: VisibleObject(x, y, width=1, string='x')
+.. class:: VisibleObject(x, y, width=1, string=',')
 
 
    Bases: :class:`src.Game.GameObject.GameObject`
 
    An object visible on the display screen
 
+   :param width: The width of the object
+   :type width: int
+   :param string: The string to display width characters from left
+   :type string: str
    :param x: the x coordinate of object
    :type x: int
    :param y: the y coordinate of object
@@ -74,48 +74,41 @@ Classes
 
    .. method:: place(self, display)
 
-      Sets location on display to this x y
+      Sets characters on display to correspond with this object
 
 
 
-.. class:: TestRightMover
-
-
-   Bases: :class:`src.Game.GameObject.VisibleObject`
-
-   A test object
-
-   .. method:: update(self, state)
-
-
-
-.. class:: TextScroll(text)
+.. class:: AnimatedObject(x, y, width, interval, string=',')
 
 
    Bases: :class:`src.Game.GameObject.VisibleObject`
 
-   Text that scrolls across screen, right to left
+   Extends visible object with a method to change visible character
 
-   .. method:: update(self, state)
+   Parent class, not to be used directly.
 
-
-
-.. class:: Spinner(x, y, chars, count=1)
-
-
-   Bases: :class:`src.Game.GameObject.VisibleObject`
-
-   An object that cycles through different characters
-   :param x: The x coordinate
+   :param x: the x-coordinate
    :type x: int
-   :param y: The y coordinate
+   :param y: the y-coordinate
    :type y: int
-   :param chars: the characters to cycle through
-   :type chars: List<char>
-   :param count: how many updates before next char, default 1
-   :type count: int
+   :param interval: interval between animation changes
+   :type interval: float
 
-   .. method:: update(self, state)
+   .. method:: update(self, state, interval)
+
+      Checks if the interval calls for a change in this object
+
+      :param state: state where object exists
+      :type state: class GameState
+      :param interval: time elapsed
+      :type interval: float
+
+
+   .. method:: change(self, state, amount)
+
+      Method to be overwritten.
+
+      Changes the object in some way if the interval has passed.
 
 
 

@@ -21,9 +21,17 @@ Classes
 
 
 
-.. class:: GameStart(program)
+.. class:: GameStart(program, display)
 
 
    Bases: :class:`src.Game.GameStates.Game`
+
+   .. method:: wave_generator(x, num)
+      :staticmethod:
+
+
+   .. method:: next_state(state, inp)
+      :staticmethod:
+
 
 

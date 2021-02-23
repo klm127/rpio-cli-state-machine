@@ -1,0 +1,55 @@
+:mod:`Map`
+==========
+
+.. py:module:: Map
+
+.. autoapi-nested-parse::
+
+   Holds the larger game map
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   Map.Map
+   Map.MapSquare
+
+
+
+.. class:: Map
+
+
+   The game map.
+
+   Holds a 2D array of `MapSquare` objects.
+
+   .. method:: get_square(self, x, y)
+
+
+
+.. class:: MapSquare(x, y, tile_class)
+
+
+   A map square.
+
+   Holds its x and y value, a MapTile object, and an object
+
+   If object is equal to 0, there is no object.
+   :param x: The x-coordinate on the map this square exists
+   :param y: The y-coordinate on the map this square exists
+   :param TileClass: A tile to initialize on the square
+   :type TileClass: Class Object
+
+   .. method:: collide(self, map_object)
+
+
+   .. method:: get_display_object(self)
+
+
+

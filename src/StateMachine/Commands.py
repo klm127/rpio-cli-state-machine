@@ -17,7 +17,6 @@ class Command:
     :type name: str
 
     """
-
     def __init__(self, state, bool_func, effect, name='untitled'):
         self.state = state
         self.bool_func = bool_func

@@ -4,6 +4,15 @@
 .. py:module:: src.Game
 
 
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   Map/index.rst
+
+
 Submodules
 ----------
 .. toctree::
@@ -12,7 +21,10 @@ Submodules
 
    Display/index.rst
    GameObject/index.rst
+   GameProgram/index.rst
    GameStart/index.rst
    GameStates/index.rst
+   MapState/index.rst
+   TitleScreenObjects/index.rst
 
 

@@ -1,0 +1,52 @@
+:mod:`src.Game.Map.MapObject`
+=============================
+
+.. py:module:: src.Game.Map.MapObject
+
+.. autoapi-nested-parse::
+
+   For objects on the map
+
+   Not a tile; an object that may be placed on a tile.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.Map.MapObject.MapObject
+   src.Game.Map.MapObject.Lava
+   src.Game.Map.MapObject.WinZone
+
+
+
+.. class:: MapObject(passable)
+
+
+   .. method:: collide(self, map_object)
+
+
+   .. method:: get_display_object(self)
+
+
+
+.. class:: Lava(passable)
+
+
+   Bases: :class:`src.Game.Map.MapObject.MapObject`
+
+   .. method:: collide(self, map_object)
+
+
+
+.. class:: WinZone(passable)
+
+
+   Bases: :class:`src.Game.Map.MapObject.MapObject`
+
+

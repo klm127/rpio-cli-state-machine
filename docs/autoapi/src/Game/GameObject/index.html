@@ -175,14 +175,8 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VisibleObject</span></code></a></p></td>
 <td><p>An object visible on the display screen</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameObject.TestRightMover" title="src.Game.GameObject.TestRightMover"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TestRightMover</span></code></a></p></td>
-<td><p>A test object</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#src.Game.GameObject.TextScroll" title="src.Game.GameObject.TextScroll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextScroll</span></code></a></p></td>
-<td><p>Text that scrolls across screen, right to left</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameObject.Spinner" title="src.Game.GameObject.Spinner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spinner</span></code></a></p></td>
-<td><p>An object that cycles through different characters</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameObject.AnimatedObject" title="src.Game.GameObject.AnimatedObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnimatedObject</span></code></a></p></td>
+<td><p>Extends visible object with a method to change visible character</p></td>
 </tr>
 </tbody>
 </table>
@@ -197,7 +191,6 @@
 <li><p><strong>x</strong> (<em>int</em>) – the x coordinates on the game map</p></li>
 <li><p><strong>y</strong> (<em>int</em>) – the y coordinates on the game map</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – the width</p></li>
-<li><p><strong>height</strong> (<em>int</em>) – the height</p></li>
 </ul>
 </dd>
 </dl>
@@ -228,19 +221,21 @@
 
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.update" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="src.Game.GameObject.VisibleObject">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">VisibleObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.VisibleObject" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">VisibleObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.VisibleObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.GameObject" title="src.Game.GameObject.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.GameObject</span></code></a></p>
 <p>An object visible on the display screen</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – The width of the object</p></li>
+<li><p><strong>string</strong> (<em>str</em>) – The string to display width characters from left</p></li>
 <li><p><strong>x</strong> (<em>int</em>) – the x coordinate of object</p></li>
 <li><p><strong>y</strong> (<em>int</em>) – the y coordinate of object</p></li>
 </ul>
@@ -249,52 +244,46 @@
 <dl class="py method">
 <dt id="src.Game.GameObject.VisibleObject.place">
 <code class="sig-name descname"><span class="pre">place</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.VisibleObject.place" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets location on display to this x y</p>
+<dd><p>Sets characters on display to correspond with this object</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="src.Game.GameObject.TestRightMover">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">TestRightMover</span></code><a class="headerlink" href="#src.Game.GameObject.TestRightMover" title="Permalink to this definition">¶</a></dt>
+<dt id="src.Game.GameObject.AnimatedObject">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">AnimatedObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.AnimatedObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.VisibleObject</span></code></a></p>
-<p>A test object</p>
+<p>Extends visible object with a method to change visible character</p>
+<p>Parent class, not to be used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – the x-coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – the y-coordinate</p></li>
+<li><p><strong>interval</strong> (<em>float</em>) – interval between animation changes</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
-<dt id="src.Game.GameObject.TestRightMover.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.TestRightMover.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt id="src.Game.GameObject.AnimatedObject.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.AnimatedObject.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the interval calls for a change in this object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>class GameState</em>) – state where object exists</p></li>
+<li><p><strong>interval</strong> (<em>float</em>) – time elapsed</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="py class">
-<dt id="src.Game.GameObject.TextScroll">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">TextScroll</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.TextScroll" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.VisibleObject</span></code></a></p>
-<p>Text that scrolls across screen, right to left</p>
 <dl class="py method">
-<dt id="src.Game.GameObject.TextScroll.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.TextScroll.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt id="src.Game.GameObject.AnimatedObject.change">
+<code class="sig-name descname"><span class="pre">change</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.AnimatedObject.change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be overwritten.</p>
+<p>Changes the object in some way if the interval has passed.</p>
 </dd></dl>
-
-<dl class="py class">
-<dt id="src.Game.GameObject.Spinner">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">Spinner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.Spinner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.VisibleObject</span></code></a></p>
-<p>An object that cycles through different characters
-:param x: The x coordinate
-:type x: int
-:param y: The y coordinate
-:type y: int
-:param chars: the characters to cycle through
-:type chars: List&lt;char&gt;
-:param count: how many updates before next char, default 1
-:type count: int</p>
-<dl class="py method">
-<dt id="src.Game.GameObject.Spinner.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.Spinner.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 

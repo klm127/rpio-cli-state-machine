@@ -28,11 +28,8 @@ class Program:
         :param new_state: A new state to load
         :type new_state: class State
         """
-        print('load state called')
         self.state.end_state()
-        print('closed state ' + str(self.state))
         self.state = new_state
-        print('new state ' + str(self.state))
 
     def execute(self, inp):
         """

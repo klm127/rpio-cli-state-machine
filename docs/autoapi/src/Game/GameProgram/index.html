@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>src.Game.GameProgram &mdash; rpio-cli-state-machine 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> rpio-cli-state-machine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">rpio-cli-state-machine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.GameProgram</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/autoapi/src/Game/GameProgram/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-src.Game.GameProgram">
+<span id="src-game-gameprogram"></span><h1><a class="reference internal" href="#module-src.Game.GameProgram" title="src.Game.GameProgram"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.GameProgram</span></code></a><a class="headerlink" href="#module-src.Game.GameProgram" title="Permalink to this headline">¶</a></h1>
+<p>Handles game loops, key presses, and shutting down.</p>
+<p>Holds the active state.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameProgram.GameProgram" title="src.Game.GameProgram.GameProgram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GameProgram</span></code></a></p></td>
+<td><p>Extends program, adding looping threads that call GameState.update()</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="src.Game.GameProgram.GameProgram">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameProgram.</span></code><code class="sig-name descname"><span class="pre">GameProgram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameProgram.GameProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../StateMachine/Program/index.html#src.StateMachine.Program.Program" title="src.StateMachine.Program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.StateMachine.Program.Program</span></code></a></p>
+<p>Extends program, adding looping threads that call GameState.update()</p>
+<p>Also reads keyboard input with pynput. Sends key presses to program.execute()</p>
+<dl class="py method">
+<dt id="src.Game.GameProgram.GameProgram.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameProgram.GameProgram.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by game thread, just calls update on self.state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameProgram.GameProgram.get_game_thread_cb">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">get_game_thread_cb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameProgram.GameProgram.get_game_thread_cb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback to get a game thread.</p>
+<p>Returns a function to attach to a game thread. Game thread should not be a daemon.
+The game thread loops while program.running is true.
+If the time since last update exceeds program.frame_rate, thread calls program.update(time interval).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>game_program</strong> (<em>class GameProgram</em>) – calling GameProgram</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A function for threading.Thread(target=…)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameProgram.GameProgram.end_program">
+<code class="sig-name descname"><span class="pre">end_program</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameProgram.GameProgram.end_program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ends the program by closing threads.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameProgram.GameProgram.on_key_cb">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">on_key_cb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameProgram.GameProgram.on_key_cb" title="Permalink to this definition">¶</a></dt>
+<dd><p>return callback passed to pynput keyboard listener.</p>
+<p>Builds a dictionary based on key presses / releases and sends
+that dictionary to program.execute when a key press is read.</p>
+<p>Called twice, once to get a callback for key presses, once to
+get a callback for key releases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>program</strong> (<em>class GameProgram</em>) – Program where key presses are read.</p></li>
+<li><p><strong>key_type</strong> (<em>str</em>) – Either ‘press’ or ‘release’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A callback to pass to keyboard.Listener of pynput</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Function</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, klm127.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

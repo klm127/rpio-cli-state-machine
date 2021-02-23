@@ -1,0 +1,37 @@
+:mod:`DisplayObject`
+====================
+
+.. py:module:: DisplayObject
+
+.. autoapi-nested-parse::
+
+   For interfacing with GameObjects
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   DisplayObject.StaticObject
+   DisplayObject.AnimatedObject
+
+
+
+.. class:: StaticObject(char)
+
+
+   .. method:: display(self, x, y, display)
+
+
+
+.. class:: AnimatedObject(chars, interval=0.2)
+
+
+   Bases: :class:`DisplayObject.StaticObject`
+
+
