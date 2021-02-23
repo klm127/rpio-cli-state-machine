@@ -1,0 +1,29 @@
+:mod:`src.Game.GameStart`
+=========================
+
+.. py:module:: src.Game.GameStart
+
+.. autoapi-nested-parse::
+
+   The starting state for the game
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.GameStart.GameStart
+
+
+
+.. class:: GameStart(program)
+
+
+   Bases: :class:`src.Game.GameStates.Game`
+
+

@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>StateMachine.States &mdash; rpio-cli-state-machine 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> rpio-cli-state-machine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../umlDiagram.html">Uml Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">rpio-cli-state-machine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">StateMachine.States</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/autoapi/StateMachine/States/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-StateMachine.States">
+<span id="statemachine-states"></span><h1><a class="reference internal" href="#module-StateMachine.States" title="StateMachine.States"><code class="xref py py-mod docutils literal notranslate"><span class="pre">StateMachine.States</span></code></a><a class="headerlink" href="#module-StateMachine.States" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#StateMachine.States.State" title="StateMachine.States.State"><code class="xref py py-obj docutils literal notranslate"><span class="pre">State</span></code></a></p></td>
+<td><p>Parent class for states to extend</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#StateMachine.States.InitialState" title="StateMachine.States.InitialState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InitialState</span></code></a></p></td>
+<td><p>The initial program state</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#StateMachine.States.TextInputState" title="StateMachine.States.TextInputState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextInputState</span></code></a></p></td>
+<td><p>A CLI type state</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="StateMachine.States.State">
+<em class="property">class </em><code class="sig-prename descclassname">StateMachine.States.</code><code class="sig-name descname">State</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">program</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parent class for states to extend</p>
+<p>Initializes a <cite>Commands</cite> object and creates a <cite>Command</cite> which binds input text “help” to an
+effect that prints the commands available in the current state.</p>
+<p>Also defines static methods for serving various states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>program</strong> (<em>class Program</em>) – The running instance of <cite>Program</cite></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="StateMachine.States.State.execute">
+<code class="sig-name descname">execute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">inp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks input to see if any Command in <cite>self.commands</cite> matches input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inp</strong> (<em>str | Dict</em>) – Input sent by <cite>Program.execute</cite>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether a matching command was found for the input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.end_state">
+<code class="sig-name descname">end_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.end_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lifecycle method called when a new state is loaded. Clears Commands.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.print_status">
+<code class="sig-name descname">print_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.print_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints program.name to console between inputs. Can be overwritten by extending classes to print something else.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.print_help">
+<em class="property">static </em><code class="sig-name descname">print_help</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">inp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.print_help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints information about commands this state can perform to the console.</p>
+<p>A callback method that should be passed to a <cite>Command</cite> object on initialization as the <cite>effect</cite> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>class State</em>) – The state in which the <cite>Command</cite> exists</p></li>
+<li><p><strong>inp</strong> (<em>str</em>) – The input the <cite>Command</cite> parsed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.send_initial_state">
+<em class="property">static </em><code class="sig-name descname">send_initial_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">test</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.send_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an instance of <cite>InitialState</cite> into the program state and ends the previous state.</p>
+<p>A callback method that should be passed to a <cite>Command</cite> object on initialization as the <cite>effect</cite> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>class State</em>) – The state in which the <cite>Command</cite> exists</p></li>
+<li><p><strong>inp</strong> (<em>str</em>) – The input the <cite>Command</cite> parsed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.send_text_state">
+<em class="property">static </em><code class="sig-name descname">send_text_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">test</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.send_text_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an instance of <cite>TextInputState</cite> into the program state and ends the previous state.</p>
+<p>A callback method that should be passed to a <cite>Command</cite> object on initialization as the <cite>effect</cite> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>class State</em>) – The state in which the <cite>Command</cite> exists</p></li>
+<li><p><strong>inp</strong> (<em>str</em>) – The input the <cite>Command</cite> parsed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.get_check_string_cb">
+<em class="property">static </em><code class="sig-name descname">get_check_string_cb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.get_check_string_cb" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method to generate a callback function that should be passed to a <cite>Command</cite> object
+on initialization as the <cite>bool_func</cite> parameter. The callback will compare an input
+to <cite>target_str</cite> and, if it matches exactly, returns true. Otherwise, it returns false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_str</strong> – A string to test inputs against</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A callback function to pass to a <cite>Command</cite> object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="StateMachine.States.State.get_front_check_string_cb">
+<em class="property">static </em><code class="sig-name descname">get_front_check_string_cb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.State.get_front_check_string_cb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a callback that will test the front part of an input string against a given value, and return true if that portion matches. Enables the inclusion of options/additional parameters with the Program or State <cite>.execute</cite> method.</p>
+<p>Callback to be used with the <cite>bool_func</cite> parameter of a <cite>Command</cite> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_str</strong> – A string to test the front part of an input string against.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A callback for use with a <cite>Command</cite> object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Function</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="StateMachine.States.InitialState">
+<em class="property">class </em><code class="sig-prename descclassname">StateMachine.States.</code><code class="sig-name descname">InitialState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">program</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.InitialState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#StateMachine.States.State" title="StateMachine.States.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateMachine.States.State</span></code></a></p>
+<p>The initial program state</p>
+<p>Same as state, but adds two commands, one for changing Program state
+to cli-mode (<cite>TextInputState</cite>) and one for changing program state to
+<cite>Gpio_10_press</cite></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="StateMachine.States.TextInputState">
+<em class="property">class </em><code class="sig-prename descclassname">StateMachine.States.</code><code class="sig-name descname">TextInputState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">program</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.TextInputState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#StateMachine.States.InitialState" title="StateMachine.States.InitialState"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateMachine.States.InitialState</span></code></a></p>
+<p>A CLI type state</p>
+<p>Creates a Gpio-mode command and changes program.name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>program</strong> – The running <cite>Program</cite> instance.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="StateMachine.States.TextInputState.execute">
+<code class="sig-name descname">execute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">inp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#StateMachine.States.TextInputState.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks input against commands. Prints an error if the command is not recognized. Afterwards, calls <cite>self.program.get_input()</cite> to get more input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inp</strong> (<em>str</em>) – Input to check against <cite>self.commands</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, klm127.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

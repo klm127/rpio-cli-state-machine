@@ -6,6 +6,7 @@ Utility classes for interfacing with the RPi.GPIO library on a Raspberry Pi.
 import time
 import RPi.GPIO as GPIO
 
+
 class Switch:
     """
     A class to wrap a GPIO input event as triggered by a simple switch.
@@ -65,6 +66,7 @@ class Switch:
             "length": self.last_press_time
         }
         self.state.execute(ev)
+
 
 class Led:
     """

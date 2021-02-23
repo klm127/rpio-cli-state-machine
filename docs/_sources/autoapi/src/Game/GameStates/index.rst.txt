@@ -1,0 +1,99 @@
+:mod:`src.Game.GameStates`
+==========================
+
+.. py:module:: src.Game.GameStates
+
+.. autoapi-nested-parse::
+
+   Game Parent State
+
+   listens to keyboard inputs
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.GameStates.Game
+
+
+
+.. data:: Command
+   
+
+   
+
+.. class:: Game(program)
+
+
+   Bases: :class:`src.StateMachine.States.State`
+
+   .. method:: get_game_thread_cb(state)
+      :staticmethod:
+
+      Callback to get game thread
+
+      :param state: calling state
+      :type state: class State
+
+
+   .. method:: update(self)
+
+      Called by game thread, updates as needed
+
+
+   .. method:: end_game(state, inp)
+      :staticmethod:
+
+
+   .. method:: is_key_cb(key_type, key)
+      :staticmethod:
+
+      Callback for use with Command.
+
+      Pass return function to bool_func parameter on Command creation.
+
+      Sees if key has been pressed
+
+      :param key_type: 'press' or 'release'
+      :type key_type: str
+      :param key: The key to look for
+      :type key: str
+
+
+   .. method:: on_key_cb(state, key_type)
+      :staticmethod:
+
+      return callback passed to pynput keyboard listener
+
+      Not for giving to Command callbacks
+
+      :param state: state context to get execution
+      :type state: class State
+      :param key_type: Either 'press' or 'release'
+      :type key_type: str
+
+
+   .. method:: print_key_info(state, inp)
+      :staticmethod:
+
+      Debug method for Command callbacks
+      :param state: Calling state, passed by Command
+      :type state: class State
+      :param inp: input
+      :type inp: dict
+
+
+   .. method:: end_state(self)
+
+      Overwritten method
+
+      Calls super().end_state() and stops listening to keyboard input
+
+
+

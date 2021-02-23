@@ -12,6 +12,8 @@ Callbacks are passed the `State` where the command was executed and can access t
 
 A program that uses RPi-GPIO inputs can be written by extending `GpioState`.
 
+Needs pynput.keyboard for game
+
 ## Documentation
 
 [Documentation](https://www.quaffingcode.com/rpio-cli-state-machine/index.html)

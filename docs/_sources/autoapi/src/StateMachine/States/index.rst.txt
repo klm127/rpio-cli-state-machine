@@ -1,0 +1,152 @@
+:mod:`src.StateMachine.States`
+==============================
+
+.. py:module:: src.StateMachine.States
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.StateMachine.States.State
+   src.StateMachine.States.InitialState
+   src.StateMachine.States.TextInputState
+
+
+
+.. class:: State(program)
+
+
+   Parent class for states to extend
+
+   Initializes a `Commands` object and creates a `Command` which binds input text "help" to an 
+   effect that prints the commands available in the current state.
+
+   Also defines static methods for serving various states.
+       
+   :param program: The running instance of `Program`
+   :type program: class Program
+
+   .. method:: execute(self, inp)
+
+      Checks input to see if any Command in `self.commands` matches input.
+
+      :param inp: Input sent by `Program.execute`.
+      :type inp: str | Dict
+      :returns: Whether a matching command was found for the input.
+      :rtype: boolean
+
+
+   .. method:: end_state(self)
+
+      Lifecycle method called when a new state is loaded. Clears Commands.
+
+
+   .. method:: print_status(self)
+
+      Prints program.name to console between inputs. Can be overwritten by extending classes to print something else.
+
+
+   .. method:: print_help(state, inp)
+      :staticmethod:
+
+      Prints information about commands this state can perform to the console.
+
+      A callback method that should be passed to a `Command` object on initialization as the `effect` parameter.
+
+      :param state: The state in which the `Command` exists
+      :type state: class State
+      :param inp: The input the `Command` parsed
+      :type inp: str
+
+
+   .. method:: send_initial_state(state, test='')
+      :staticmethod:
+
+      Loads an instance of `InitialState` into the program state and ends the previous state.
+
+      A callback method that should be passed to a `Command` object on initialization as the `effect` parameter.
+
+      :param state: The state in which the `Command` exists
+      :type state: class State
+      :param inp: The input the `Command` parsed
+      :type inp: str
+
+
+   .. method:: send_text_state(state, test='')
+      :staticmethod:
+
+      Loads an instance of `TextInputState` into the program state and ends the previous state.
+
+      A callback method that should be passed to a `Command` object on initialization as the `effect` parameter.
+
+      :param state: The state in which the `Command` exists
+      :type state: class State
+      :param inp: The input the `Command` parsed
+      :type inp: str
+
+
+   .. method:: get_check_string_cb(target_str)
+      :staticmethod:
+
+      A method to generate a callback function that should be passed to a `Command` object
+      on initialization as the `bool_func` parameter. The callback will compare an input 
+      to `target_str` and, if it matches exactly, returns true. Otherwise, it returns false.
+
+      :param target_str: A string to test inputs against
+      :type param: str
+      :returns: A callback function to pass to a `Command` object.
+      :rtype: Function
+
+
+   .. method:: get_front_check_string_cb(target_str)
+      :staticmethod:
+
+      Returns a callback that will test the front part of an input string against a given value, and return true if that portion matches. Enables the inclusion of options/additional parameters with the Program or State `.execute` method. 
+
+      Callback to be used with the `bool_func` parameter of a `Command` object.
+
+      :param target_str: A string to test the front part of an input string against.
+      :type param: str
+      :returns: A callback for use with a `Command` object.
+      :rtype: Function
+
+
+
+.. class:: InitialState(program)
+
+
+   Bases: :class:`src.StateMachine.States.State`
+
+   The initial program state
+
+   Same as state, but adds two commands, one for changing Program state
+   to cli-mode (`TextInputState`) and one for changing program state to
+   `Gpio_10_press`
+
+
+.. class:: TextInputState(program)
+
+
+   Bases: :class:`src.StateMachine.States.InitialState`
+
+   A CLI type state
+
+   Creates a Gpio-mode command and changes program.name
+
+   :param program: The running `Program` instance.
+   :type param: class Program
+
+   .. method:: execute(self, inp)
+
+      Checks input against commands. Prints an error if the command is not recognized. Afterwards, calls `self.program.get_input()` to get more input.
+
+      :param inp: Input to check against `self.commands`
+      :type inp: str
+
+
+

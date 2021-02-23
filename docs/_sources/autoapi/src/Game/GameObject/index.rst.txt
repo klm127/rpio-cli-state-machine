@@ -1,0 +1,121 @@
+:mod:`src.Game.GameObject`
+==========================
+
+.. py:module:: src.Game.GameObject
+
+.. autoapi-nested-parse::
+
+   A Game object. Holds x and y positions
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.GameObject.GameObject
+   src.Game.GameObject.VisibleObject
+   src.Game.GameObject.TestRightMover
+   src.Game.GameObject.TextScroll
+   src.Game.GameObject.Spinner
+
+
+
+.. class:: GameObject(x, y, width=1)
+
+
+   A game object holding position and size info.
+
+   x,y are top left coordinates for variable size object
+
+   :param x: the x coordinates on the game map
+   :type x: int
+   :param y: the y coordinates on the game map
+   :type y: int
+   :param width: the width
+   :type width: int
+   :param height: the height
+   :type height: int
+
+   .. method:: up(self, num=1)
+
+
+   .. method:: down(self, num=1)
+
+
+   .. method:: left(self, num=1)
+
+
+   .. method:: right(self, num=1)
+
+
+   .. method:: place(self, display)
+
+
+   .. method:: update(self, state)
+
+
+
+.. class:: VisibleObject(x, y, width=1, string='x')
+
+
+   Bases: :class:`src.Game.GameObject.GameObject`
+
+   An object visible on the display screen
+
+   :param x: the x coordinate of object
+   :type x: int
+   :param y: the y coordinate of object
+   :type y: int
+
+   .. method:: place(self, display)
+
+      Sets location on display to this x y
+
+
+
+.. class:: TestRightMover
+
+
+   Bases: :class:`src.Game.GameObject.VisibleObject`
+
+   A test object
+
+   .. method:: update(self, state)
+
+
+
+.. class:: TextScroll(text)
+
+
+   Bases: :class:`src.Game.GameObject.VisibleObject`
+
+   Text that scrolls across screen, right to left
+
+   .. method:: update(self, state)
+
+
+
+.. class:: Spinner(x, y, chars, count=1)
+
+
+   Bases: :class:`src.Game.GameObject.VisibleObject`
+
+   An object that cycles through different characters
+   :param x: The x coordinate
+   :type x: int
+   :param y: The y coordinate
+   :type y: int
+   :param chars: the characters to cycle through
+   :type chars: List<char>
+   :param count: how many updates before next char, default 1
+   :type count: int
+
+   .. method:: update(self, state)
+
+
+

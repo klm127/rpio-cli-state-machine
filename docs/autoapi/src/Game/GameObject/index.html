@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>src.Game.GameObject &mdash; rpio-cli-state-machine 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> rpio-cli-state-machine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">rpio-cli-state-machine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.GameObject</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/autoapi/src/Game/GameObject/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-src.Game.GameObject">
+<span id="src-game-gameobject"></span><h1><a class="reference internal" href="#module-src.Game.GameObject" title="src.Game.GameObject"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.GameObject</span></code></a><a class="headerlink" href="#module-src.Game.GameObject" title="Permalink to this headline">¶</a></h1>
+<p>A Game object. Holds x and y positions</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameObject.GameObject" title="src.Game.GameObject.GameObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GameObject</span></code></a></p></td>
+<td><p>A game object holding position and size info.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VisibleObject</span></code></a></p></td>
+<td><p>An object visible on the display screen</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameObject.TestRightMover" title="src.Game.GameObject.TestRightMover"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TestRightMover</span></code></a></p></td>
+<td><p>A test object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.Game.GameObject.TextScroll" title="src.Game.GameObject.TextScroll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextScroll</span></code></a></p></td>
+<td><p>Text that scrolls across screen, right to left</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.GameObject.Spinner" title="src.Game.GameObject.Spinner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spinner</span></code></a></p></td>
+<td><p>An object that cycles through different characters</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="src.Game.GameObject.GameObject">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">GameObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>A game object holding position and size info.</p>
+<p>x,y are top left coordinates for variable size object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – the x coordinates on the game map</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – the y coordinates on the game map</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – the width</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the height</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="src.Game.GameObject.GameObject.up">
+<code class="sig-name descname"><span class="pre">up</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameObject.GameObject.down">
+<code class="sig-name descname"><span class="pre">down</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameObject.GameObject.left">
+<code class="sig-name descname"><span class="pre">left</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameObject.GameObject.right">
+<code class="sig-name descname"><span class="pre">right</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameObject.GameObject.place">
+<code class="sig-name descname"><span class="pre">place</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.place" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.GameObject.GameObject.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.Game.GameObject.VisibleObject">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">VisibleObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.VisibleObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.GameObject" title="src.Game.GameObject.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.GameObject</span></code></a></p>
+<p>An object visible on the display screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – the x coordinate of object</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – the y coordinate of object</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="src.Game.GameObject.VisibleObject.place">
+<code class="sig-name descname"><span class="pre">place</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.VisibleObject.place" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets location on display to this x y</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.Game.GameObject.TestRightMover">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">TestRightMover</span></code><a class="headerlink" href="#src.Game.GameObject.TestRightMover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.VisibleObject</span></code></a></p>
+<p>A test object</p>
+<dl class="py method">
+<dt id="src.Game.GameObject.TestRightMover.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.TestRightMover.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.Game.GameObject.TextScroll">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">TextScroll</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.TextScroll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.VisibleObject</span></code></a></p>
+<p>Text that scrolls across screen, right to left</p>
+<dl class="py method">
+<dt id="src.Game.GameObject.TextScroll.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.TextScroll.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.Game.GameObject.Spinner">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameObject.</span></code><code class="sig-name descname"><span class="pre">Spinner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.Spinner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.Game.GameObject.VisibleObject" title="src.Game.GameObject.VisibleObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameObject.VisibleObject</span></code></a></p>
+<p>An object that cycles through different characters
+:param x: The x coordinate
+:type x: int
+:param y: The y coordinate
+:type y: int
+:param chars: the characters to cycle through
+:type chars: List&lt;char&gt;
+:param count: how many updates before next char, default 1
+:type count: int</p>
+<dl class="py method">
+<dt id="src.Game.GameObject.Spinner.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.Spinner.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, klm127.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

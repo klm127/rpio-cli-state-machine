@@ -1,0 +1,18 @@
+:mod:`src.Game`
+===============
+
+.. py:module:: src.Game
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   Display/index.rst
+   GameObject/index.rst
+   GameStart/index.rst
+   GameStates/index.rst
+
+

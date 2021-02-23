@@ -2,8 +2,7 @@
 Class for managing the active state.
 """
 
-import States
-import time
+from src.StateMachine import States
 
 
 class Program:
@@ -11,12 +10,29 @@ class Program:
     Holds current state and sends execution to that state.
     
     On initialization, sets `self.state` to an instance of `States.InitialState(self)`
+
+    :param state: The Initial State
+    :type state: class State
     
     """
 
     def __init__(self):
         self.state = States.InitialState(self)
         self.name = "~ State Machine Program ~"
+        self.verbose = True
+
+    def load_state(self, new_state):
+        """
+        Ends the old state and loads new state
+
+        :param new_state: A new state to load
+        :type new_state: class State
+        """
+        print('load state called')
+        self.state.end_state()
+        print('closed state ' + str(self.state))
+        self.state = new_state
+        print('new state ' + str(self.state))
 
     def execute(self, inp):
         """
@@ -26,7 +42,8 @@ class Program:
         :type inp: str | dict
        
         """
-        print('executing ' +inp)
+        if self.verbose:
+            print('executing ' + str(inp))
         self.state.execute(inp)
 
     def get_input(self):

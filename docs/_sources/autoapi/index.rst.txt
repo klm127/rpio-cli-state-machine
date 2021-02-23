@@ -6,11 +6,6 @@ This page contains auto-generated API reference documentation [#f1]_.
 .. toctree::
    :titlesonly:
 
-   /autoapi/Commands/index
-   /autoapi/GpioUtil/index
-   /autoapi/main/index
-   /autoapi/Program/index
-   /autoapi/simpleread/index
-   /autoapi/States/index
+   /autoapi/src/index
 
 .. [#f1] Created with `sphinx-autoapi <https://github.com/readthedocs/sphinx-autoapi>`_

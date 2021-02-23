@@ -1,0 +1,11 @@
+- create a class in Gpio module for interfacing with display
+    - should be able to take a string and convert it to a display
+
+
+def on_press(key):
+    print(key)
+
+
+with keyboard.Listener(on_press=on_press) as listener:
+    listener.join()
+

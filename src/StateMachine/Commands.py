@@ -2,6 +2,7 @@
 Classes for binding conditions to effects on the state of the program, using callback functions for input testing and state effect alteration. 
 """
 
+
 class Command:
     """
     Binds an evaluation callback to an effect callback.
