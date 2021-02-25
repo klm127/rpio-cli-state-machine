@@ -1,0 +1,52 @@
+:mod:`src.Game.MapState`
+========================
+
+.. py:module:: src.Game.MapState
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.MapState.MapState
+
+
+
+.. class:: MapState(program, display)
+
+
+   Bases: :class:`src.Game.GameStates.Game`
+
+   Parent game state.
+
+   Updates game objects and holds commands to change features of state.
+
+   .. method:: update(self, interval)
+
+      Overwritten method
+      Then calls display.print to display.
+      :param interval: The time since last update.
+      :type interval: float
+
+
+   .. method:: right_press(state, inp)
+      :staticmethod:
+
+
+   .. method:: left_press(state, inp)
+      :staticmethod:
+
+
+   .. method:: up_press(state, inp)
+      :staticmethod:
+
+
+   .. method:: down_press(state, inp)
+      :staticmethod:
+
+
+

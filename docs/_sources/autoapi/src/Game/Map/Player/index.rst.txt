@@ -1,0 +1,60 @@
+:mod:`src.Game.Map.Player`
+==========================
+
+.. py:module:: src.Game.Map.Player
+
+.. autoapi-nested-parse::
+
+   The player
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.Map.Player.Player
+   src.Game.Map.Player.Viewport
+
+
+
+.. class:: Player(x, y, game_map)
+
+
+   Bases: :class:`src.Game.Map.MapObject.MapObject`
+
+   .. method:: get_view(self)
+
+
+   .. method:: up_pressed(self)
+
+
+   .. method:: down_pressed(self)
+
+
+   .. method:: left_pressed(self)
+
+
+   .. method:: right_pressed(self)
+
+
+
+.. class:: Viewport(player)
+
+
+   .. method:: load_view(self)
+
+
+   .. method:: load_to_display(self, display)
+
+
+   .. method:: update(self)
+
+      will be used to update animated objects.
+
+
+

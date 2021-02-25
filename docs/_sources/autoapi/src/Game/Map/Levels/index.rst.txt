@@ -1,0 +1,34 @@
+:mod:`src.Game.Map.Levels`
+==========================
+
+.. py:module:: src.Game.Map.Levels
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.Map.Levels.Level
+   src.Game.Map.Levels.Levels
+
+
+
+.. class:: Level(str_arr)
+
+
+   .. method:: get_map(self)
+
+
+
+.. class:: Levels
+
+   .. attribute:: demo
+      
+
+      
+
+

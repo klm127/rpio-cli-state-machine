@@ -1,0 +1,101 @@
+:mod:`src.Gpio.HitachiDisplay`
+==============================
+
+.. py:module:: src.Gpio.HitachiDisplay
+
+.. autoapi-nested-parse::
+
+   Can be passed in as printer object to a Game.Display instance
+   For a Hitachi HD44780U to be used to run pirate game
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Gpio.HitachiDisplay.HitachiPrinter
+
+
+
+.. data:: LINE_1
+   :annotation: = 128
+
+   
+
+.. data:: LINE_2
+   :annotation: = 192
+
+   
+
+.. data:: BACKLIGHT
+   :annotation: = 8
+
+   
+
+.. data:: ENABLE
+   :annotation: = 4
+
+   
+
+.. data:: CMD_4BIT
+   :annotation: = 40
+
+   
+
+.. data:: CMD_CLEAR
+   :annotation: = 1
+
+   
+
+.. data:: CMD_HOME
+   :annotation: = 2
+
+   
+
+.. data:: CMD_POSITION
+   :annotation: = 128
+
+   
+
+.. data:: DELAY
+   :annotation: = 0.0005
+
+   
+
+.. data:: CMD_MODE
+   :annotation: = 0
+
+   
+
+.. data:: DATA_MODE
+   :annotation: = 1
+
+   
+
+.. class:: HitachiPrinter(address=39, width=16)
+
+
+   .. method:: lcd_init(self)
+
+
+   .. method:: custom_char(self)
+
+
+   .. method:: lcd_toggle_enable(self, bits)
+
+
+   .. method:: lcd_byte(self, bits, mode)
+
+
+   .. method:: lcd_string(self, message, line)
+
+
+   .. method:: print(self, rows)
+
+
+

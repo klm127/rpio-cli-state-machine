@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>src.Gpio.HitachiDisplay &mdash; rpio-cli-state-machine 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> rpio-cli-state-machine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">rpio-cli-state-machine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Gpio.HitachiDisplay</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/autoapi/src/Gpio/HitachiDisplay/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-src.Gpio.HitachiDisplay">
+<span id="src-gpio-hitachidisplay"></span><h1><a class="reference internal" href="#module-src.Gpio.HitachiDisplay" title="src.Gpio.HitachiDisplay"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Gpio.HitachiDisplay</span></code></a><a class="headerlink" href="#module-src.Gpio.HitachiDisplay" title="Permalink to this headline">¶</a></h1>
+<p>Can be passed in as printer object to a Game.Display instance
+For a Hitachi HD44780U to be used to run pirate game</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.Gpio.HitachiDisplay.HitachiPrinter" title="src.Gpio.HitachiDisplay.HitachiPrinter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HitachiPrinter</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.LINE_1">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">LINE_1</span></code><em class="property"> <span class="pre">=</span> <span class="pre">128</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.LINE_1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.LINE_2">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">LINE_2</span></code><em class="property"> <span class="pre">=</span> <span class="pre">192</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.LINE_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.BACKLIGHT">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">BACKLIGHT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.BACKLIGHT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.ENABLE">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">ENABLE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.ENABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.CMD_4BIT">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">CMD_4BIT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">40</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.CMD_4BIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.CMD_CLEAR">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">CMD_CLEAR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.CMD_CLEAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.CMD_HOME">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">CMD_HOME</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.CMD_HOME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.CMD_POSITION">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">CMD_POSITION</span></code><em class="property"> <span class="pre">=</span> <span class="pre">128</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.CMD_POSITION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.DELAY">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">DELAY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0.0005</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.DELAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.CMD_MODE">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">CMD_MODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.CMD_MODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="src.Gpio.HitachiDisplay.DATA_MODE">
+<code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">DATA_MODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#src.Gpio.HitachiDisplay.DATA_MODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">HitachiPrinter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">39</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_init">
+<code class="sig-name descname"><span class="pre">lcd_init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter.custom_char">
+<code class="sig-name descname"><span class="pre">custom_char</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.custom_char" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_toggle_enable">
+<code class="sig-name descname"><span class="pre">lcd_toggle_enable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_toggle_enable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_byte">
+<code class="sig-name descname"><span class="pre">lcd_byte</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_byte" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_string">
+<code class="sig-name descname"><span class="pre">lcd_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.Gpio.HitachiDisplay.HitachiPrinter.print">
+<code class="sig-name descname"><span class="pre">print</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.print" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, klm127.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

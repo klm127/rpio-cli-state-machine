@@ -1,0 +1,114 @@
+:mod:`src.Game.GameObject`
+==========================
+
+.. py:module:: src.Game.GameObject
+
+.. autoapi-nested-parse::
+
+   A Game object. Holds x and y positions
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.GameObject.GameObject
+   src.Game.GameObject.VisibleObject
+   src.Game.GameObject.AnimatedObject
+
+
+
+.. class:: GameObject(x, y, width=1)
+
+
+   A game object holding position and size info.
+
+   x,y are top left coordinates for variable size object
+
+   :param x: the x coordinates on the game map
+   :type x: int
+   :param y: the y coordinates on the game map
+   :type y: int
+   :param width: the width
+   :type width: int
+
+   .. method:: up(self, num=1)
+
+
+   .. method:: down(self, num=1)
+
+
+   .. method:: left(self, num=1)
+
+
+   .. method:: right(self, num=1)
+
+
+   .. method:: place(self, display)
+
+
+   .. method:: update(self, state, interval)
+
+
+
+.. class:: VisibleObject(x, y, width=1, text=',')
+
+
+   Bases: :class:`src.Game.GameObject.GameObject`
+
+   An object visible on the display screen
+
+   :param width: The width of the object
+   :type width: int
+   :param string: The string to display width characters from left
+   :type string: str
+   :param x: the x coordinate of object
+   :type x: int
+   :param y: the y coordinate of object
+   :type y: int
+
+   .. method:: place(self, display)
+
+      Sets characters on display to correspond with this object
+
+
+
+.. class:: AnimatedObject(x, y, width, interval, string=',')
+
+
+   Bases: :class:`src.Game.GameObject.VisibleObject`
+
+   Extends visible object with a method to change visible character
+
+   Parent class, not to be used directly.
+
+   :param x: the x-coordinate
+   :type x: int
+   :param y: the y-coordinate
+   :type y: int
+   :param interval: interval between animation changes
+   :type interval: float
+
+   .. method:: update(self, state, interval)
+
+      Checks if the interval calls for a change in this object
+
+      :param state: state where object exists
+      :type state: class GameState
+      :param interval: time elapsed
+      :type interval: float
+
+
+   .. method:: change(self, state, amount)
+
+      Method to be overwritten.
+
+      Changes the object in some way if the interval has passed.
+
+
+

@@ -1,0 +1,22 @@
+:mod:`src.Gpio`
+===============
+
+.. py:module:: src.Gpio
+
+.. autoapi-nested-parse::
+
+   Contains functions and classes for interfacing with GPIO of a Raspberry Pi
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   GpioStates/index.rst
+   GpioUtil/index.rst
+   HitachiDisplay/index.rst
+
+

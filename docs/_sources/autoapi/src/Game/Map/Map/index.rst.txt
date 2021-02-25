@@ -1,0 +1,93 @@
+:mod:`src.Game.Map.Map`
+=======================
+
+.. py:module:: src.Game.Map.Map
+
+.. autoapi-nested-parse::
+
+   Holds the larger game map
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.Map.Map.Map
+   src.Game.Map.Map.MapSquare
+
+
+
+.. class:: Map(map_array, player_x, player_y)
+
+
+   The game map.
+
+   Holds a 2D array of `MapSquare` objects.
+
+   .. method:: get_square(self, x, y)
+
+      Gets the mapSquare object at x,y
+      :param x: x coordinate of map square
+      :type x: int
+      :param y: y coordinate of map square
+      :type y: int
+
+
+   .. method:: get_display_object(self, x, y)
+
+      Gets the display object at a square, for use by Viewport class
+      :param x: x-coordinate of map square
+      :type x: int
+      :param y: y-coordinate of map square
+      :type y: int
+
+
+   .. method:: request_move(self, map_object, x, y)
+
+      Called by a movable game object when it wants to move. Adds move to an array for processing.
+
+      :param map_object: A Map Object
+      :type map_object: class MapObject
+      :param x: desired new x
+      :type x: int
+      :param y: desired new y
+      :type y: int
+
+
+   .. method:: process_moves(self)
+
+
+
+.. class:: MapSquare(x, y, tile_class, char)
+
+
+   A map square.
+
+   Holds its x and y value, a MapTile object, and an object
+
+   If object is equal to 0, there is no object.
+   :param x: The x-coordinate on the map this square exists
+   :param y: The y-coordinate on the map this square exists
+   :param tile_class: A tile to initialize on the square
+   :type tile_class: Class Object
+
+   .. method:: collide(self, map_object)
+
+      Called by Map object when a Map Object tries to move into tihs Map Square.
+      Checks if anything in this square makes it not passable. If not passable, returns False
+
+      :param map_object: The object attempting to move into this square.
+      :type map_object: MapObject
+
+
+   .. method:: get_display_object(self)
+
+      Gets the appropriate object for rendering on a Display
+
+
+

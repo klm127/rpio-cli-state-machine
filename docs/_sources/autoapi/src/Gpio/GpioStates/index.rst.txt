@@ -1,0 +1,110 @@
+:mod:`src.Gpio.GpioStates`
+==========================
+
+.. py:module:: src.Gpio.GpioStates
+
+.. autoapi-nested-parse::
+
+   States specific to interfacing with pins on a Raspberry PI
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Gpio.GpioStates.GpioState
+   src.Gpio.GpioStates.GpioState_10_press
+
+
+
+.. class:: GpioState(program)
+
+
+   Bases: :class:`States.InitialState`
+
+   A state for handling GPIO input events
+
+   Changes program state to a mode which handles GPIO events. Clears out inherited commands and creates a new `Commands` object for use with GPIO-based commands.
+
+   Contains a dictionary, `self.pins`, with keys corresponding to pins and values corresponding to objects from `GpioUtil`.
+
+   :param program: A `Program` instance.
+   :type program: class Program
+
+   .. method:: press_cb(self, pin)
+
+      Returns a callback for use with a `Command` object. That callback tests if an input object's `["pin"]` property is equal to the parameter pin, and returns true if it matches.
+
+      :param pin: The pin an input should be checked against
+      :type pin: int
+      :returns: A callback passed to a `Command` object as the `bool_func` parameter.
+      :rtype: Function
+
+
+   .. method:: execute(self, inp)
+
+      Overwrites inherited method. If it is passed a string input, prints an error message and returns false. Otherwise, checks commands.
+
+      :param inp: An input object
+      :type inp: str | Dict
+      :returns: True if a matching command was found and input was not a string, false otherwise.
+      :rtype boolean:
+
+
+   .. method:: print_switch_info(state, inp)
+      :staticmethod:
+
+      Debug method passed as a callback to a `Command` object in the `effect` parameter. Prints information about input received.
+
+      :param state: The calling state, passed by the `Command` object.
+      :type state: class State
+      :param inp: The input object, passed by the `Command` object.
+      :type inp: dict
+
+
+
+.. class:: GpioState_10_press(program, switch, led)
+
+
+   Bases: :class:`src.Gpio.GpioStates.GpioState`
+
+   10 press flash state
+
+   This state sets up a button and an LED. Button press lengths are recorded. When 10
+   button presses are logged, the LED flashes 10 times for those lengths, with a 1
+   second delay between flashes.
+
+   :param program: The active `Program` object.
+   :type program: class Program
+   :param switch: The GPIO Pin a Switch is set on.
+   :type switch: int
+   :param led: The GPIO Pin an LED is set on.
+   :type led: int
+
+   .. method:: light_time_append(state, inp)
+      :staticmethod:
+
+      A callback method to be passed to `Command` as the `effect` parameter.
+
+      Adds the length of a button press to the `light_times` list in the `GpioState_10_press` object. If that list has more than 10 items, it instead calls `state.flash_light`
+
+      :param state: The calling `State` object, passed by the `Command` object.
+      :type state: class Gpio_10_press
+      :param inp: The input object.
+      :type inp: class Object
+
+
+   .. method:: flash_light(self, inp)
+
+      Flashes an LED light ten times. Deactivates input switch while running. Waits 1 second between flashes. When finished, the list of times is empty and the program is ready to repeat.
+
+      :param inp: Input passed by the Commands object. The `Switch` is retrieved from this parameter in order to temporarily deactivate it.
+      :type inp: class Dict
+
+
+

@@ -1,0 +1,17 @@
+:mod:`src.StateMachine`
+=======================
+
+.. py:module:: src.StateMachine
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   Commands/index.rst
+   Program/index.rst
+   States/index.rst
+
+
