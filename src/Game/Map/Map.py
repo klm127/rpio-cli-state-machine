@@ -26,7 +26,7 @@ class Map:
         :type y: int
         """
         if x < 0 or x > self.width-1 or y < 0 or y > self.height-1:
-            return MapSquare(x, y, Tile.Wall)  # return a wall if at end of map
+            return MapSquare(x, y, Tile.Wall, '~')  # return a wall if at end of map
         return self.mapArray[y][x]
 
     def get_display_object(self, x, y):
@@ -38,9 +38,9 @@ class Map:
         :type y: int
         """
         if x < 0 or x >= self.width:
-            return DisplayObject.StaticObject('E')
+            return DisplayObject.StaticObject('~')
         if y < 0 or y >= self.height:
-            return DisplayObject.StaticObject('E')
+            return DisplayObject.StaticObject('~')
         return self.mapArray[y][x].get_display_object()
 
     def request_move(self, map_object, x, y):
@@ -67,6 +67,8 @@ class Map:
                 target_square.objects.append(m[0])
                 m[0].x = m[1]
                 m[0].y = m[2]
+            m[0].viewport.load_view()
+            m[0].moving = False
 
 
 
@@ -82,10 +84,10 @@ class MapSquare:
     :param tile_class: A tile to initialize on the square
     :type tile_class: Class Object
     """
-    def __init__(self, x, y, tile_class, char):
+    def __init__(self, x, y, tile_class, character):
         self.x = x
         self.y = y
-        self.tile = tile_class(char)
+        self.tile = tile_class(character)
         self.objects = []
 
     def collide(self, map_object):

@@ -30,15 +30,19 @@ class MapState(Game):
     @staticmethod
     def right_press(state, inp):
         state.player.right_pressed()
+        state.view.load_to_display(state.display)
 
     @staticmethod
     def left_press(state, inp):
         state.player.left_pressed()
+        state.view.load_to_display(state.display)
 
     @staticmethod
     def up_press(state, inp):
         state.player.up_pressed()
+        state.view.load_to_display(state.display)
 
     @staticmethod
     def down_press(state, inp):
         state.player.down_pressed()
+        state.view.load_to_display(state.display)

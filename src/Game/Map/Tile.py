@@ -15,11 +15,11 @@ class Tile:
 
 
 class Floor(Tile):
-    def __init__(self, char=':'):
-        Tile.__init__(self, char)
+    def __init__(self, character=':'):
+        Tile.__init__(self, char=character)
 
 
 class Wall(Tile):
-    def __init__(self, char='X'):
-        Tile.__init__(self, char)
+    def __init__(self, character='X'):
+        Tile.__init__(self, char=character)
         self.passable = False

@@ -15,6 +15,7 @@ class Player(MapObject.MapObject):
         self.left_right = "right"
         self.char = "@"
         self.game_map = game_map
+        self.moving = False
         game_map.mapArray[y][x].objects.append(self)
         self.viewport = Viewport(self)
 
@@ -24,30 +25,34 @@ class Player(MapObject.MapObject):
     def up_pressed(self):
         if self.up_down == "down":
             self.up_down = "up"
+            self.viewport.load_view()
         else:
             self.game_map.request_move(self, self.x, self.y-1)
-        self.viewport.load_view()
+            self.moving = True
 
     def down_pressed(self):
         if self.up_down == "up":
             self.up_down = "down"
+            self.viewport.load_view()
         else:
             self.game_map.request_move(self, self.x, self.y+1)
-        self.viewport.load_view()
+            self.moving = True
 
     def left_pressed(self):
         if self.left_right == "right":
             self.left_right = "left"
+            self.viewport.load_view()
         else:
             self.game_map.request_move(self, self.x-1, self.y)
-        self.viewport.load_view()
+            self.moving = True
 
     def right_pressed(self):
         if self.left_right == "left":
             self.left_right = "right"
+            self.viewport.load_view()
         else:
             self.game_map.request_move(self, self.x+1, self.y)
-        self.viewport.load_view()
+            self.moving = True
 
 
 class Viewport:
@@ -63,27 +68,12 @@ class Viewport:
         start_x = 0
         if self.player.up_down == "down":
             top_row = self.player.y
-            # player y start, player y + 1 end
-            if self.player.left_right == "right":
-                start_x = self.player.x - 7
-                # player x - 7 start, player x + 8 end
-                pass
-            else:  # left
-                start_x = self.player.x - 8
-                # player x - 8 start, player x + 7 end
-                pass
-        else:  # up
-            top_row = self.player.y - 1
-            # player y-1 start, player y + 1 end
-            if self.player.left_right == "right":
-                start_x = self.player.x - 7
-                # player x - 7 start, player x + 8 end
-                pass
-            else:  # left
-                start_x = self.player.x - 8
-                # player x - 8 start, player x + 7 end
-                pass
-
+        else:
+            top_row =self.player.y - 1
+        if self.player.left_right == "right":
+            start_x = self.player.x - 7
+        else:
+            start_x = self.player.x - 8
         self.display_array = []
         for y in range(0, 2):
             row = []
