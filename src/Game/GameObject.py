@@ -53,17 +53,17 @@ class VisibleObject(GameObject):
     :param y: the y coordinate of object
     :type y: int
     """
-    def __init__(self, x, y, width=1, string=','):
+    def __init__(self, x, y, width=1, text=','):
         GameObject.__init__(self, x, y, width)
-        self.string = string
+        self.text = text
 
     def place(self, display):
         """
         Sets characters on display to correspond with this object
         """
         for i in range(0, self.width):
-            if i < len(self.string):
-                display.change(self.y, self.x + i, self.string[i])
+            if i < len(self.text):
+                display.change(self.y, self.x + i, self.text[i])
 
 
 class AnimatedObject(VisibleObject):

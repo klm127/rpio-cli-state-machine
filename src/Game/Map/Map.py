@@ -1,7 +1,7 @@
 """
 Holds the larger game map
 """
-import Tile
+from src.Game.Map import Tile, DisplayObject, Player
 
 
 class Map:
@@ -10,19 +10,64 @@ class Map:
 
     Holds a 2D array of `MapSquare` objects.
     """
-    def __init__(self):
-        self.mapArray = []  # an array of map objects.
+    def __init__(self, map_array, player_x, player_y):
+        self.mapArray = map_array  # an array of map objects.
         self.moveRequests = []  # current move requests
-        for y in range(0, 10):
-            row = []
-            for x in range(0, 10):
-                row.append(MapSquare(x, y, Tile.Floor))
-            self.mapArray.append(row)
         self.height = len(self.mapArray)
         self.width = len(self.mapArray[0])
+        self.player = Player.Player(player_x, player_y, self)
 
     def get_square(self, x, y):
+        """
+        Gets the mapSquare object at x,y
+        :param x: x coordinate of map square
+        :type x: int
+        :param y: y coordinate of map square
+        :type y: int
+        """
+        if x < 0 or x > self.width-1 or y < 0 or y > self.height-1:
+            return MapSquare(x, y, Tile.Wall)  # return a wall if at end of map
         return self.mapArray[y][x]
+
+    def get_display_object(self, x, y):
+        """
+        Gets the display object at a square, for use by Viewport class
+        :param x: x-coordinate of map square
+        :type x: int
+        :param y: y-coordinate of map square
+        :type y: int
+        """
+        if x < 0 or x >= self.width:
+            return DisplayObject.StaticObject('E')
+        if y < 0 or y >= self.height:
+            return DisplayObject.StaticObject('E')
+        return self.mapArray[y][x].get_display_object()
+
+    def request_move(self, map_object, x, y):
+        """
+        Called by a movable game object when it wants to move. Adds move to an array for processing.
+
+        :param map_object: A Map Object
+        :type map_object: class MapObject
+        :param x: desired new x
+        :type x: int
+        :param y: desired new y
+        :type y: int
+        """
+        self.moveRequests.append([map_object, x, y])
+
+    def process_moves(self):
+        while len(self.moveRequests) > 0:
+            m = self.moveRequests.pop()  # m[0]=object, m[1]=new x, m[2]=new y
+            target_square = self.get_square(m[1], m[2])
+            if target_square.collide(m[0]):
+                old_square = self.get_square(m[0].x, m[0].y)
+                i = old_square.objects.index(m[0])
+                old_square.objects.pop(i)
+                target_square.objects.append(m[0])
+                m[0].x = m[1]
+                m[0].y = m[2]
+
 
 
 class MapSquare:
@@ -34,16 +79,23 @@ class MapSquare:
     If object is equal to 0, there is no object.
     :param x: The x-coordinate on the map this square exists
     :param y: The y-coordinate on the map this square exists
-    :param TileClass: A tile to initialize on the square
-    :type TileClass: Class Object
+    :param tile_class: A tile to initialize on the square
+    :type tile_class: Class Object
     """
-    def __init__(self, x, y, tile_class):
+    def __init__(self, x, y, tile_class, char):
         self.x = x
         self.y = y
-        self.tile = tile_class()
+        self.tile = tile_class(char)
         self.objects = []
 
     def collide(self, map_object):
+        """
+        Called by Map object when a Map Object tries to move into tihs Map Square.
+        Checks if anything in this square makes it not passable. If not passable, returns False
+
+        :param map_object: The object attempting to move into this square.
+        :type map_object: MapObject
+        """
         if not self.tile.passable:
             return False
         else:
@@ -57,6 +109,9 @@ class MapSquare:
                 return True
 
     def get_display_object(self):
+        """
+        Gets the appropriate object for rendering on a Display
+        """
         if len(self.objects) == 0:
             return self.tile.get_display_object()
         else:

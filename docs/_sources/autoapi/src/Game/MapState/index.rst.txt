@@ -1,6 +1,0 @@
-:mod:`src.Game.MapState`
-========================
-
-.. py:module:: src.Game.MapState
-
-

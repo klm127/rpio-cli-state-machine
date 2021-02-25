@@ -26,7 +26,7 @@ class GameProgram(Program.Program):
         )
         self.state = GameStates.Game(self, display)
         self.running = True
-        self.frame_rate = 0.1
+        self.frame_rate = 0.05
         self.keyListener.start()
         self.game_thread = threading.Thread(target=GameProgram.get_game_thread_cb(self), daemon=False)
         self.game_thread.start()

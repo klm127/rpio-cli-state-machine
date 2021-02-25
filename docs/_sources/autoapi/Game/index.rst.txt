@@ -1,6 +1,0 @@
-:mod:`Game`
-===========
-
-.. py:module:: Game
-
-

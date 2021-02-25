@@ -3,7 +3,8 @@ Display is two 28 character lines
 
 Display holds the character values at each index
 """
-
+import os  # for clearing console on console printer
+import sys   # for clearing console on console printer
 
 class Display:
     """
@@ -15,12 +16,16 @@ class Display:
         self.rows = []
         for row_num in range(0, 2):
             row = []
-            for col in range(0, 28):
+            for col in range(0, 16):
                 row.append(' ')
             self.rows.append(row)
         self.printer = ConsolePrinter()
+        self.changed = False
 
     def blank(self):
+        """
+        Sets all rows and columns to space character
+        """
         for r in self.rows:
             for c in range(0, len(r)):
                 r[c] = ' '
@@ -31,7 +36,9 @@ class Display:
 
         Printer is set by default to a Console Printer but this can be changed to, for example a printer for a Hitachi HD444780
         """
-        self.printer.print(self.rows)
+        if self.changed:
+            self.printer.print(self.rows)
+        self.changed = False
 
     def change(self, row, column, new):
         """
@@ -46,6 +53,7 @@ class Display:
         """
         if len(self.rows) > row >= 0 and len(self.rows[0]) > column >= 0:
             self.rows[row][column] = new
+        self.changed = True
 
 
 class ConsolePrinter:
@@ -63,4 +71,8 @@ class ConsolePrinter:
             for val in range(0, len(row)):
                 row_string += row[val]
             row_string += '\n'
+        if sys.platform == 'win32':
+            os.system('cls')
+        else:
+            os.system('clear')
         print(row_string)

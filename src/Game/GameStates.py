@@ -90,3 +90,4 @@ class Game(States.State):
         Calls super().end_state() and stops listening to keyboard input
         """
         super().end_state()
+        self.game_objects = []

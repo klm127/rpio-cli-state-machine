@@ -13,10 +13,8 @@ class TextScroll(AnimatedObject):
     :param interval: The time between moves
     :type interval: float
     """
-    def __init__(self, text, interval=0.5):
+    def __init__(self, text, interval=0.5, x=16, y=0):
         width = len(text)
-        x = 28
-        y = 0
         AnimatedObject.__init__(self, x, y, width, interval, text)
 
     def change(self, state, amount):
@@ -34,6 +32,7 @@ class TextScroll(AnimatedObject):
         if self.x + self.width < 0:
             try:
                 i = state.game_objects.index(self)
+                state.done(self)
                 state.game_objects.pop(i)
             except ValueError:
                 print("tried to remove a game element not in list!")
@@ -60,9 +59,8 @@ class Spinner(AnimatedObject):
 
     def change(self, state, amount):
         new_frame = self.index + amount
-        if new_frame >= len(self.chars):
-            self.index = len(self.chars) % new_frame
+        while new_frame > len(self.chars)-1:
+            new_frame -= len(self.chars)
         else:
             self.index = new_frame
-        self.string = self.chars[self.index]
-
+        self.text = self.chars[self.index]
