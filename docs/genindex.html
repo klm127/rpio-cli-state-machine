@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
@@ -189,6 +192,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/src/Game/Map/MapObject/index.html#src.Game.Map.MapObject.Lava.alt">alt (src.Game.Map.MapObject.Lava attribute)</a>
+</li>
       <li><a href="autoapi/src/Game/GameObject/index.html#src.Game.GameObject.AnimatedObject">AnimatedObject (class in src.Game.GameObject)</a>
 
       <ul>
@@ -233,10 +238,10 @@
 </li>
       <li><a href="autoapi/src/Gpio/HitachiDisplay/index.html#src.Gpio.HitachiDisplay.CMD_HOME">CMD_HOME (in module src.Gpio.HitachiDisplay)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Gpio/HitachiDisplay/index.html#src.Gpio.HitachiDisplay.CMD_MODE">CMD_MODE (in module src.Gpio.HitachiDisplay)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Gpio/HitachiDisplay/index.html#src.Gpio.HitachiDisplay.CMD_POSITION">CMD_POSITION (in module src.Gpio.HitachiDisplay)</a>
 </li>
       <li><a href="autoapi/src/Game/Map/Map/index.html#src.Game.Map.Map.MapSquare.collide">collide() (src.Game.Map.Map.MapSquare method)</a>
@@ -245,6 +250,8 @@
         <li><a href="autoapi/src/Game/Map/MapObject/index.html#src.Game.Map.MapObject.Lava.collide">(src.Game.Map.MapObject.Lava method)</a>
 </li>
         <li><a href="autoapi/src/Game/Map/MapObject/index.html#src.Game.Map.MapObject.MapObject.collide">(src.Game.Map.MapObject.MapObject method)</a>
+</li>
+        <li><a href="autoapi/src/Game/Map/MapObject/index.html#src.Game.Map.MapObject.WinZone.collide">(src.Game.Map.MapObject.WinZone method)</a>
 </li>
       </ul></li>
       <li><a href="autoapi/src/StateMachine/Commands/index.html#src.StateMachine.Commands.Command">Command (class in src.StateMachine.Commands)</a>
@@ -271,16 +278,22 @@
 </li>
       <li><a href="autoapi/src/Gpio/HitachiDisplay/index.html#src.Gpio.HitachiDisplay.DELAY">DELAY (in module src.Gpio.HitachiDisplay)</a>
 </li>
-      <li><a href="autoapi/src/Game/Map/Levels/index.html#src.Game.Map.Levels.Levels.demo">demo (src.Game.Map.Levels.Levels attribute)</a>
+      <li><a href="autoapi/src/Game/Map/Player/index.html#src.Game.Map.Player.Player.destroy">destroy() (src.Game.Map.Player.Player method)</a>
 </li>
       <li><a href="autoapi/src/Game/Display/index.html#src.Game.Display.Display">Display (class in src.Game.Display)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Game/Map/DisplayObject/index.html#src.Game.Map.DisplayObject.StaticObject.display">display() (src.Game.Map.DisplayObject.StaticObject method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Game/GameStart/index.html#src.Game.GameStart.GameStart.done">done() (src.Game.GameStart.GameStart method)</a>
+
+      <ul>
+        <li><a href="autoapi/src/Game/LoseState/index.html#src.Game.LoseState.Lose.done">(src.Game.LoseState.Lose method)</a>
 </li>
+        <li><a href="autoapi/src/Game/WinState/index.html#src.Game.WinState.Win.done">(src.Game.WinState.Win method)</a>
+</li>
+      </ul></li>
       <li><a href="autoapi/src/Game/GameObject/index.html#src.Game.GameObject.GameObject.down">down() (src.Game.GameObject.GameObject method)</a>
 </li>
       <li><a href="autoapi/src/Game/MapState/index.html#src.Game.MapState.MapState.down_press">down_press() (src.Game.MapState.MapState static method)</a>
@@ -415,13 +428,15 @@
 </li>
       <li><a href="autoapi/src/Game/MapState/index.html#src.Game.MapState.MapState.left_press">left_press() (src.Game.MapState.MapState static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Game/Map/Player/index.html#src.Game.Map.Player.Player.left_pressed">left_pressed() (src.Game.Map.Player.Player method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Game/Map/Levels/index.html#src.Game.Map.Levels.Level">Level (class in src.Game.Map.Levels)</a>
 </li>
       <li><a href="autoapi/src/Game/Map/Levels/index.html#src.Game.Map.Levels.Levels">Levels (class in src.Game.Map.Levels)</a>
+</li>
+      <li><a href="autoapi/src/Game/Map/Levels/index.html#src.Game.Map.Levels.Levels.levs">levs (src.Game.Map.Levels.Levels attribute)</a>
 </li>
       <li><a href="autoapi/src/Gpio/GpioStates/index.html#src.Gpio.GpioStates.GpioState_10_press.light_time_append">light_time_append() (src.Gpio.GpioStates.GpioState_10_press static method)</a>
 </li>
@@ -434,6 +449,8 @@
       <li><a href="autoapi/src/Game/Map/Player/index.html#src.Game.Map.Player.Viewport.load_to_display">load_to_display() (src.Game.Map.Player.Viewport method)</a>
 </li>
       <li><a href="autoapi/src/Game/Map/Player/index.html#src.Game.Map.Player.Viewport.load_view">load_view() (src.Game.Map.Player.Viewport method)</a>
+</li>
+      <li><a href="autoapi/src/Game/LoseState/index.html#src.Game.LoseState.Lose">Lose (class in src.Game.LoseState)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -467,6 +484,8 @@
 </li>
         <li><a href="autoapi/src/Game/GameStates/index.html#module-src.Game.GameStates">src.Game.GameStates</a>
 </li>
+        <li><a href="autoapi/src/Game/LoseState/index.html#module-src.Game.LoseState">src.Game.LoseState</a>
+</li>
         <li><a href="autoapi/src/Game/Map/index.html#module-src.Game.Map">src.Game.Map</a>
 </li>
         <li><a href="autoapi/src/Game/Map/DisplayObject/index.html#module-src.Game.Map.DisplayObject">src.Game.Map.DisplayObject</a>
@@ -484,6 +503,8 @@
         <li><a href="autoapi/src/Game/MapState/index.html#module-src.Game.MapState">src.Game.MapState</a>
 </li>
         <li><a href="autoapi/src/Game/TitleScreenObjects/index.html#module-src.Game.TitleScreenObjects">src.Game.TitleScreenObjects</a>
+</li>
+        <li><a href="autoapi/src/Game/WinState/index.html#module-src.Game.WinState">src.Game.WinState</a>
 </li>
         <li><a href="autoapi/src/Gpio/index.html#module-src.Gpio">src.Gpio</a>
 </li>
@@ -642,6 +663,13 @@
 </li>
       </ul></li>
       <li>
+    src.Game.LoseState
+
+      <ul>
+        <li><a href="autoapi/src/Game/LoseState/index.html#module-src.Game.LoseState">module</a>
+</li>
+      </ul></li>
+      <li>
     src.Game.Map
 
       <ul>
@@ -704,6 +732,13 @@
 
       <ul>
         <li><a href="autoapi/src/Game/TitleScreenObjects/index.html#module-src.Game.TitleScreenObjects">module</a>
+</li>
+      </ul></li>
+      <li>
+    src.Game.WinState
+
+      <ul>
+        <li><a href="autoapi/src/Game/WinState/index.html#module-src.Game.WinState">module</a>
 </li>
       </ul></li>
       <li>
@@ -805,7 +840,9 @@
 </li>
         <li><a href="autoapi/src/Game/GameStates/index.html#src.Game.GameStates.Game.update">(src.Game.GameStates.Game method)</a>
 </li>
-        <li><a href="autoapi/src/Game/Map/Player/index.html#src.Game.Map.Player.Viewport.update">(src.Game.Map.Player.Viewport method)</a>
+        <li><a href="autoapi/src/Game/Map/DisplayObject/index.html#src.Game.Map.DisplayObject.AnimatedObject.update">(src.Game.Map.DisplayObject.AnimatedObject method)</a>
+</li>
+        <li><a href="autoapi/src/Game/Map/DisplayObject/index.html#src.Game.Map.DisplayObject.StaticObject.update">(src.Game.Map.DisplayObject.StaticObject method)</a>
 </li>
         <li><a href="autoapi/src/Game/MapState/index.html#src.Game.MapState.MapState.update">(src.Game.MapState.MapState method)</a>
 </li>
@@ -830,9 +867,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/src/Game/Map/Tile/index.html#src.Game.Map.Tile.Wall">Wall (class in src.Game.Map.Tile)</a>
 </li>
+      <li><a href="autoapi/src/Game/GameStart/index.html#src.Game.GameStart.GameStart.wave_generator">wave_generator() (src.Game.GameStart.GameStart static method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/src/Game/GameStart/index.html#src.Game.GameStart.GameStart.wave_generator">wave_generator() (src.Game.GameStart.GameStart static method)</a>
+      <li><a href="autoapi/src/Game/WinState/index.html#src.Game.WinState.Win">Win (class in src.Game.WinState)</a>
 </li>
       <li><a href="autoapi/src/Game/Map/MapObject/index.html#src.Game.Map.MapObject.WinZone">WinZone (class in src.Game.Map.MapObject)</a>
 </li>

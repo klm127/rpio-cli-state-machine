@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
 </ul>
@@ -158,7 +161,10 @@
             
   <section id="module-src.Game.GameStart">
 <span id="src-game-gamestart"></span><h1><a class="reference internal" href="#module-src.Game.GameStart" title="src.Game.GameStart"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.GameStart</span></code></a><a class="headerlink" href="#module-src.Game.GameStart" title="Permalink to this headline">¶</a></h1>
-<p>The starting state for the game</p>
+<p>The starting state for the game.</p>
+<p>Shows some text and spinners to introduce the player to the game.</p>
+<p>When space-bar is pressed or when the text is finished scrolling, loads up the MapState to begin game.</p>
+<p>Extends src.Game.Map.GameStates.Game</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -180,18 +186,48 @@
 <dd><p>Bases: <a class="reference internal" href="../GameStates/index.html#src.Game.GameStates.Game" title="src.Game.GameStates.Game"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.GameStates.Game</span></code></a></p>
 <dl class="py method">
 <dt id="src.Game.GameStart.GameStart.done">
-<code class="sig-name descname"><span class="pre">done</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrollText</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStart.GameStart.done" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">done</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scroll_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStart.GameStart.done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the instances of TextScroll in TitleScreenObjects.</p>
+<p>Lets this state know that the text scrolls are done scrolling.</p>
+<p>GameStart looks at which text scroll is done, then creates the next one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scroll_text</strong> (<em>class src.Game.Map.TitleScreenObjects.TextScroll</em>) – The calling scroll text object</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameStart.GameStart.wave_generator">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">wave_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStart.GameStart.wave_generator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns new instances of <cite>TitleScreenObjects.spinner</cite> to rotate some characters that give the
+vague appearance of being waves, in keeping with the pirate theme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – The x on the display, either 1 or 2, to place them (they all start at y=1)</p></li>
+<li><p><strong>num</strong> (<em>float</em>) – The interval time between frame changes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameStart.GameStart.next_state">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">next_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStart.GameStart.next_state" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Called by a <cite>Command</cite> through an <cite>effect</cite> callback.</p>
+<p>Triggered by space bar on the title screen.</p>
+<p>Sets self.program.state to a <cite>MapState</cite> instance, passing the same display this state used to <cite>MapState</cite></p>
+<p>Neither parameter is actually used, but this is the structure of a command callback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>extends class src.StateMachine.States.State</em>) – The calling state (will be self)</p></li>
+<li><p><strong>inp</strong> (<em>dict</em>) – The input - will be a key dict</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

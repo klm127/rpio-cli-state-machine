@@ -3,6 +3,11 @@
 
 .. py:module:: src.Game.Map.Levels
 
+.. autoapi-nested-parse::
+
+   Generates `Maps` from text data.
+
+
 
 Module Contents
 ---------------
@@ -20,13 +25,26 @@ Classes
 .. class:: Level(str_arr)
 
 
+   Generates a map from a string array, following these rules:
+   The map will be as wide as the first row in the string array.
+   The @ symbol indicates player start location, otherwise it will be 0,0.
+   A '.', '=', ':', or ' ' will generate a (passable) floor object.
+   A '$' will generate a `WinZone` object at that location which, when reached, allows level ascension.
+   An 'l' will generate an animated lava tile that, when touched, results in a Game Over.
+
+   :param str_arr: An array of strings representing level design.
+   :type str_arr: Array<string>
+
    .. method:: get_map(self)
 
 
 
 .. class:: Levels
 
-   .. attribute:: demo
+   Levels.levs contains Levels generated from string arrays. `MapState` holds an index of the current level and
+   retrieves it from `Levels.levs`.
+
+   .. attribute:: levs
       
 
       

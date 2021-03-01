@@ -5,7 +5,7 @@
 
 .. autoapi-nested-parse::
 
-   Display is two 28 character lines
+   Display is two 16 character lines, held in a 2D array
 
    Display holds the character values at each index
 
@@ -29,7 +29,11 @@ Classes
 
    Holds values to display and prints them
 
-   Calls self.printer(rows) to print 2 28 char rows of text with its printer property
+   Calls self.printer(rows) to print 2 16 char rows of text with its printer property
+
+   Starts with space character in each location.
+
+   Starts with a ConsolePrinter as its printer; replace with HitachiDisplay after initialization to use Hitachi
 
    .. method:: blank(self)
 

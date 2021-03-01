@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../index.html">API Reference</a></li>
 </ul>
@@ -158,7 +161,11 @@
             
   <section id="module-src.Game.Map.DisplayObject">
 <span id="src-game-map-displayobject"></span><h1><a class="reference internal" href="#module-src.Game.Map.DisplayObject" title="src.Game.Map.DisplayObject"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.Map.DisplayObject</span></code></a><a class="headerlink" href="#module-src.Game.Map.DisplayObject" title="Permalink to this headline">¶</a></h1>
-<p>For interfacing with GameObjects</p>
+<p>For displaying game objects such as <cite>Map.Tile</cite> and <cite>Map.MapObject</cite>.</p>
+<p>Similar to <cite>src.Game.GameObject</cite> (and may be merged eventually) but does not hold x and y coordinates.</p>
+<p>Instead, x y coordinates are given to instance of <cite>DisplayObject</cite> at the time the object is displayed by the Map</p>
+<p>MapObjects hold instances of <cite>DisplayObject</cite> that they return when its time for them to be displayed.</p>
+<p>Essentially, information about how something on the map should appear on the display.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -173,7 +180,7 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#src.Game.Map.DisplayObject.AnimatedObject" title="src.Game.Map.DisplayObject.AnimatedObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnimatedObject</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Extends Static Object</p></td>
 </tr>
 </tbody>
 </table>
@@ -183,6 +190,21 @@
 <dd><dl class="py method">
 <dt id="src.Game.Map.DisplayObject.StaticObject.display">
 <code class="sig-name descname"><span class="pre">display</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.DisplayObject.StaticObject.display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the display at row y column x to self.char.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – the x-coordinate of the display to change</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – the y-coordinate of the display to change</p></li>
+<li><p><strong>display</strong> (<em>class src.Game.Display</em>) – the Display to change</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.Map.DisplayObject.StaticObject.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.DisplayObject.StaticObject.update" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -191,6 +213,12 @@
 <dt id="src.Game.Map.DisplayObject.AnimatedObject">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.DisplayObject.</span></code><code class="sig-name descname"><span class="pre">AnimatedObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.DisplayObject.AnimatedObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.Map.DisplayObject.StaticObject" title="src.Game.Map.DisplayObject.StaticObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.Map.DisplayObject.StaticObject</span></code></a></p>
+<p>Extends Static Object</p>
+<dl class="py method">
+<dt id="src.Game.Map.DisplayObject.AnimatedObject.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.DisplayObject.AnimatedObject.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </section>

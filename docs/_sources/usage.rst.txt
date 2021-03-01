@@ -1,5 +1,5 @@
-Usage
------
+Usage - StateMachine
+--------------------
 
 To run a program using this library, an instance of `Program` is created. As of now, if you wish to add an additional `State`, you need to add functionality to `InitialState` that will serve your new State. In the next iteration, it will be possible to pass `Program` a different initial state on construction.
 

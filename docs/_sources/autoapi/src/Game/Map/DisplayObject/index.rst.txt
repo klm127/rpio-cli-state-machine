@@ -5,7 +5,15 @@
 
 .. autoapi-nested-parse::
 
-   For interfacing with GameObjects
+   For displaying game objects such as `Map.Tile` and `Map.MapObject`.
+
+   Similar to `src.Game.GameObject` (and may be merged eventually) but does not hold x and y coordinates.
+
+   Instead, x y coordinates are given to instance of `DisplayObject` at the time the object is displayed by the Map
+
+   MapObjects hold instances of `DisplayObject` that they return when its time for them to be displayed.
+
+   Essentially, information about how something on the map should appear on the display.
 
 
 
@@ -27,11 +35,28 @@ Classes
 
    .. method:: display(self, x, y, display)
 
+      Changes the display at row y column x to self.char.
+
+      :param x: the x-coordinate of the display to change
+      :type x: int
+      :param y: the y-coordinate of the display to change
+      :type y: int
+      :param display: the Display to change
+      :type display: class src.Game.Display
+
+
+   .. method:: update(self, interval)
+
 
 
 .. class:: AnimatedObject(chars, interval=0.2)
 
 
    Bases: :class:`src.Game.Map.DisplayObject.StaticObject`
+
+   Extends Static Object
+
+   .. method:: update(self, interval)
+
 
 

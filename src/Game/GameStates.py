@@ -4,7 +4,7 @@ Game State
 Holds a list of game objects. Updates them when program tells state to update
 as looping continues.
 
-Handles keyboard input commands as sent by GameProgram.
+Handles keyboard input commands as sent by GameProgram - sends to self.Commands to parse
 """
 
 from src.StateMachine import Commands, Program, States
@@ -17,7 +17,18 @@ class Game(States.State):
     """
     Parent game state.
 
-    Updates game objects and holds commands to change features of state.
+    Extended by GameStart and MapState
+
+    Updates game objects and, like all states, holds commands to change affect state.
+
+    Sets program.verbose to false
+
+    Also holds a display object, which by default is a Console printer but can be `src.Game.Gpio.HitachiDisplay`
+
+    :param program: The program where this state exists
+    :type program: extends class src.StateMachine.Program.Program
+    :param display: The display where this state will print info
+    :type display: class src.Game.Map.Display
     """
     def __init__(self, program, display):
         States.State.__init__(self, program)
@@ -40,11 +51,11 @@ class Game(States.State):
             o.update(self, interval)
         self.display.print()
 
-    """
-    Calls end_program on state.program, shutting down all threads and ending the program.
-    """
     @staticmethod
     def end_game(state, inp):
+        """
+        Calls end_program on state.program, shutting down all threads and ending the program.
+        """
         state.program.end_program()
 
     @staticmethod

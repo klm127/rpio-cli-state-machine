@@ -1,0 +1,47 @@
+:mod:`src.Game.LoseState`
+=========================
+
+.. py:module:: src.Game.LoseState
+
+.. autoapi-nested-parse::
+
+   Game Over state
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.LoseState.Lose
+
+
+
+.. class:: Lose(program, display)
+
+
+   Bases: :class:`src.Game.GameStates.Game`
+
+   Parent game state.
+
+   Extended by GameStart and MapState
+
+   Updates game objects and, like all states, holds commands to change affect state.
+
+   Sets program.verbose to false
+
+   Also holds a display object, which by default is a Console printer but can be `src.Game.Gpio.HitachiDisplay`
+
+   :param program: The program where this state exists
+   :type program: extends class src.StateMachine.Program.Program
+   :param display: The display where this state will print info
+   :type display: class src.Game.Map.Display
+
+   .. method:: done(self, scroll_text)
+
+
+

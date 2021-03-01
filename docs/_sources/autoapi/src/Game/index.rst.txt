@@ -24,7 +24,9 @@ Submodules
    GameProgram/index.rst
    GameStart/index.rst
    GameStates/index.rst
+   LoseState/index.rst
    MapState/index.rst
    TitleScreenObjects/index.rst
+   WinState/index.rst
 
 

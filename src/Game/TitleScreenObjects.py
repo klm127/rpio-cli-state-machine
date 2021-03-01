@@ -58,6 +58,18 @@ class Spinner(AnimatedObject):
         self.interval = interval
 
     def change(self, state, amount):
+        """
+        Overwrites method of GameObject.AnimatedObject.
+
+        `AnimatedObject.update` calls `AnimatedObject.change` with the amount.
+
+        "spins" the character array into the next frame if it's time has elapsed.
+
+        :param state: The game state
+        :type state: GameState
+        :param amount: The number of changes that have occurred
+        :type amount: int
+        """
         new_frame = self.index + amount
         while new_frame > len(self.chars)-1:
             new_frame -= len(self.chars)

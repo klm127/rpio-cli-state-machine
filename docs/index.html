@@ -87,7 +87,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
@@ -159,15 +162,13 @@
             
   <section id="rpio-cli-state-machine">
 <h1>rpio-cli-state-machine<a class="headerlink" href="#rpio-cli-state-machine" title="Permalink to this headline">¶</a></h1>
-<p><cite>rpio-cli-state-machine</cite> provides classes for managing states in a Python program. Custom states are created by extending <cite>TextInputState</cite>, for cli based programs, or <cite>GpioState</cite>, for programs utilizing the RPIO pins of a Raspberry Pi.</p>
-<p>Each <cite>State</cite> creates <cite>Commands</cite> on initialization, and adds <cite>Command</cite> objects to it. A <cite>Command</cite> consists of two callbacks; a function to test whether a condition is true and a function to execute if it is true. When <cite>State.execute(input)</cite> is called, it checks its Commands for any Commands whose condition matches the input and executes the first one it finds. Effect functions might serve another state, print text, or perform some other operation.</p>
-<p>Every time a <cite>Command</cite> uses a callback, it passes a reference to its encapsulating state. <cite>Command</cite> effect callbacks can always access and alter the State in which the <cite>Command</cite> was created. When a <cite>State</cite> is made inactive, the <cite>Commands</cite> object and associated references are destroyed.</p>
-<p>The <cite>GpioUtil</cite> module provides utility classes for wrapping RPIO/GPIO functionality with the <cite>Rpi.GPIO</cite> library. A <cite>Switch</cite> class gets times that switches were pressed for and sends it to the <cite>GpioState</cite> for execution. The <cite>GpioState</cite> maintains a dictionary of pins and their associated <cite>GpioUtil</cite> objects and will deactivate them on state changes when the lifecycle method <cite>end_state()</cite> is called, which happens when a state is changed.</p>
-<p>Static methods in <cite>State</cite> generate callbacks to pass to a <cite>Command</cite> object on creation that evaluate text input. Static methods in <cite>GpioState</cite> evaluate Gpio input.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="autoapi/src/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src</span></code></a></li>

@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
 </ul>
@@ -197,32 +200,74 @@
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.up">
 <code class="sig-name descname"><span class="pre">up</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.up" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Decreases self.y</p>
+<p>Should only be called by Map object once move is determined valid, not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – y to decrease</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.down">
 <code class="sig-name descname"><span class="pre">down</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.down" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Increases self.y</p>
+<p>Should only be called by Map object once move is determined valid, not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – y to increase</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.left">
 <code class="sig-name descname"><span class="pre">left</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.left" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Decreases self.x</p>
+<p>Should only be called by Map object once move is determined valid, not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – x to decrease</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.right">
 <code class="sig-name descname"><span class="pre">right</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.right" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Increases self.x</p>
+<p>Should only be called by Map object once move is determined valid, not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – x to increase</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.place">
 <code class="sig-name descname"><span class="pre">place</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.place" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Should be overwritten by extending classes</p>
+<p>Places an appropriate character at an appropriate location on the display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>display</strong> (<em>src.Game.Map.Display</em>) – Object holding characters to be displayed</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameObject.GameObject.update">
 <code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.GameObject.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Will be called by a map or display object to update the display character if needed
+Only relevant for animated objects
+To be overwritten by extending classes
+:param state: A state holding info about what to display
+:type state: extends class src.Game.Map.GameStates.Game
+:param interval: The time since the last update
+:type interval: float</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -235,7 +280,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>width</strong> (<em>int</em>) – The width of the object</p></li>
-<li><p><strong>string</strong> (<em>str</em>) – The string to display width characters from left</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – The string to display width characters from left</p></li>
 <li><p><strong>x</strong> (<em>int</em>) – the x coordinate of object</p></li>
 <li><p><strong>y</strong> (<em>int</em>) – the y coordinate of object</p></li>
 </ul>
@@ -245,6 +290,11 @@
 <dt id="src.Game.GameObject.VisibleObject.place">
 <code class="sig-name descname"><span class="pre">place</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameObject.VisibleObject.place" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets characters on display to correspond with this object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>display</strong> (<em>src.Game.Map.Display</em>) – Object holding characters to be displayed</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

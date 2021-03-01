@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../index.html">API Reference</a></li>
 </ul>
@@ -158,6 +161,7 @@
             
   <section id="module-src.Game.Map.Levels">
 <span id="src-game-map-levels"></span><h1><a class="reference internal" href="#module-src.Game.Map.Levels" title="src.Game.Map.Levels"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.Map.Levels</span></code></a><a class="headerlink" href="#module-src.Game.Map.Levels" title="Permalink to this headline">¶</a></h1>
+<p>Generates <cite>Maps</cite> from text data.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -169,17 +173,28 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.Map.Levels.Level" title="src.Game.Map.Levels.Level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Level</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Generates a map from a string array, following these rules:</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#src.Game.Map.Levels.Levels" title="src.Game.Map.Levels.Levels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Levels</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Levels.levs contains Levels generated from string arrays. <cite>MapState</cite> holds an index of the current level and</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt id="src.Game.Map.Levels.Level">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Levels.</span></code><code class="sig-name descname"><span class="pre">Level</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str_arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Levels.Level" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>Generates a map from a string array, following these rules:
+The map will be as wide as the first row in the string array.
+The &#64; symbol indicates player start location, otherwise it will be 0,0.
+A ‘.’, ‘=’, ‘:’, or ‘ ‘ will generate a (passable) floor object.
+A ‘$’ will generate a <cite>WinZone</cite> object at that location which, when reached, allows level ascension.
+An ‘l’ will generate an animated lava tile that, when touched, results in a Game Over.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>str_arr</strong> (<em>Array&lt;string&gt;</em>) – An array of strings representing level design.</p>
+</dd>
+</dl>
+<dl class="py method">
 <dt id="src.Game.Map.Levels.Level.get_map">
 <code class="sig-name descname"><span class="pre">get_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Levels.Level.get_map" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -189,9 +204,11 @@
 <dl class="py class">
 <dt id="src.Game.Map.Levels.Levels">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Levels.</span></code><code class="sig-name descname"><span class="pre">Levels</span></code><a class="headerlink" href="#src.Game.Map.Levels.Levels" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py attribute">
-<dt id="src.Game.Map.Levels.Levels.demo">
-<code class="sig-name descname"><span class="pre">demo</span></code><a class="headerlink" href="#src.Game.Map.Levels.Levels.demo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Levels.levs contains Levels generated from string arrays. <cite>MapState</cite> holds an index of the current level and
+retrieves it from <cite>Levels.levs</cite>.</p>
+<dl class="py attribute">
+<dt id="src.Game.Map.Levels.Levels.levs">
+<code class="sig-name descname"><span class="pre">levs</span></code><a class="headerlink" href="#src.Game.Map.Levels.Levels.levs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

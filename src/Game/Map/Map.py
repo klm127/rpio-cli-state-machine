@@ -1,5 +1,7 @@
 """
-Holds the larger game map
+Holds the game map, whether win has been reached, or whether a lose condition has been triggered.
+
+Handles `MapObjects` that desire to move.
 """
 from src.Game.Map import Tile, DisplayObject, Player
 
@@ -16,6 +18,8 @@ class Map:
         self.height = len(self.mapArray)
         self.width = len(self.mapArray[0])
         self.player = Player.Player(player_x, player_y, self)
+        self.win_reached = False
+        self.lose = False
 
     def get_square(self, x, y):
         """
@@ -38,9 +42,9 @@ class Map:
         :type y: int
         """
         if x < 0 or x >= self.width:
-            return DisplayObject.StaticObject('~')
+            return DisplayObject.StaticObject(chr(0b11110111))
         if y < 0 or y >= self.height:
-            return DisplayObject.StaticObject('~')
+            return DisplayObject.StaticObject(chr(0b11110111))
         return self.mapArray[y][x].get_display_object()
 
     def request_move(self, map_object, x, y):
@@ -71,7 +75,6 @@ class Map:
             m[0].moving = False
 
 
-
 class MapSquare:
     """
     A map square.
@@ -79,10 +82,13 @@ class MapSquare:
     Holds its x and y value, a MapTile object, and an object
 
     If object is equal to 0, there is no object.
+
+    Passed the actual class of Tile, not a tile instance. Initializes Tile itself.
+
     :param x: The x-coordinate on the map this square exists
     :param y: The y-coordinate on the map this square exists
     :param tile_class: A tile to initialize on the square
-    :type tile_class: Class Object
+    :type tile_class: class Class extends Map.Tile
     """
     def __init__(self, x, y, tile_class, character):
         self.x = x
@@ -112,7 +118,11 @@ class MapSquare:
 
     def get_display_object(self):
         """
-        Gets the appropriate object for rendering on a Display
+        Gets the appropriate object for rendering on a Display.
+
+        Will be the tile if there are no objects in the square.
+
+        Otherwise, will be the topmost object.
         """
         if len(self.objects) == 0:
             return self.tile.get_display_object()

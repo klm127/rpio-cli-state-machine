@@ -9,6 +9,8 @@
 
    Holds the active state.
 
+   Tells state to update whenever its frame rate time passes
+
 
 
 Module Contents

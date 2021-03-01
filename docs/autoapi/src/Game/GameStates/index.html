@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
 </ul>
@@ -161,7 +164,7 @@
 <p>Game State</p>
 <p>Holds a list of game objects. Updates them when program tells state to update
 as looping continues.</p>
-<p>Handles keyboard input commands as sent by GameProgram.</p>
+<p>Handles keyboard input commands as sent by GameProgram - sends to self.Commands to parse</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -187,7 +190,18 @@ as looping continues.</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.GameStates.</span></code><code class="sig-name descname"><span class="pre">Game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../StateMachine/States/index.html#src.StateMachine.States.State" title="src.StateMachine.States.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.StateMachine.States.State</span></code></a></p>
 <p>Parent game state.</p>
-<p>Updates game objects and holds commands to change features of state.</p>
+<p>Extended by GameStart and MapState</p>
+<p>Updates game objects and, like all states, holds commands to change affect state.</p>
+<p>Sets program.verbose to false</p>
+<p>Also holds a display object, which by default is a Console printer but can be <cite>src.Game.Gpio.HitachiDisplay</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>program</strong> (<em>extends class src.StateMachine.Program.Program</em>) – The program where this state exists</p></li>
+<li><p><strong>display</strong> (<em>class src.Game.Map.Display</em>) – The display where this state will print info</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="src.Game.GameStates.Game.update">
 <code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.update" title="Permalink to this definition">¶</a></dt>
@@ -201,7 +215,8 @@ Then calls display.print to display.
 <dl class="py method">
 <dt id="src.Game.GameStates.Game.end_game">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">end_game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.GameStates.Game.end_game" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Calls end_program on state.program, shutting down all threads and ending the program.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.GameStates.Game.is_key_cb">

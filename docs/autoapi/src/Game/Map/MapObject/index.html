@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../index.html">API Reference</a></li>
 </ul>
@@ -158,7 +161,7 @@
             
   <section id="module-src.Game.Map.MapObject">
 <span id="src-game-map-mapobject"></span><h1><a class="reference internal" href="#module-src.Game.Map.MapObject" title="src.Game.Map.MapObject"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.Map.MapObject</span></code></a><a class="headerlink" href="#module-src.Game.Map.MapObject" title="Permalink to this headline">¶</a></h1>
-<p>For objects on the map</p>
+<p>Objects on the map.</p>
 <p>Not a tile; an object that may be placed on a tile.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
@@ -171,20 +174,27 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.Map.MapObject.MapObject" title="src.Game.Map.MapObject.MapObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapObject</span></code></a></p></td>
-<td><p></p></td>
+<td><p>General map object, held in an array by a map square which also holds a tile</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#src.Game.Map.MapObject.Lava" title="src.Game.Map.MapObject.Lava"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lava</span></code></a></p></td>
-<td><p></p></td>
+<td><p>When this is touched, the colliding object gets .destroy() called on it</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.Map.MapObject.WinZone" title="src.Game.Map.MapObject.WinZone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WinZone</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Colliding with this object causes next level to be loaded by <cite>MapState</cite></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt id="src.Game.Map.MapObject.MapObject">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.MapObject.</span></code><code class="sig-name descname"><span class="pre">MapObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">passable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.MapObject.MapObject" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>General map object, held in an array by a map square which also holds a tile</p>
+<p>Can be passable or not. Has a display object that is returned when it’s time to display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>passable</strong> (<em>boolean</em>) – whether it can be walked into</p>
+</dd>
+</dl>
+<dl class="py method">
 <dt id="src.Game.Map.MapObject.MapObject.collide">
 <code class="sig-name descname"><span class="pre">collide</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.MapObject.MapObject.collide" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -200,10 +210,20 @@
 <dt id="src.Game.Map.MapObject.Lava">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.MapObject.</span></code><code class="sig-name descname"><span class="pre">Lava</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">passable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.MapObject.Lava" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.Map.MapObject.MapObject" title="src.Game.Map.MapObject.MapObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.Map.MapObject.MapObject</span></code></a></p>
+<p>When this is touched, the colliding object gets .destroy() called on it</p>
+<p>As of this version, the only object that can move is the player and
+touching lava causes player to lose the game.</p>
+<dl class="py attribute">
+<dt id="src.Game.Map.MapObject.Lava.alt">
+<code class="sig-name descname"><span class="pre">alt</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#src.Game.Map.MapObject.Lava.alt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt id="src.Game.Map.MapObject.Lava.collide">
 <code class="sig-name descname"><span class="pre">collide</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.MapObject.Lava.collide" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Calls .destroy() on the map_object which, as of this iteration, will be the player.</p>
+<p>This in turn sets the lose condition on <cite>Map</cite>, causing GameOver at next update.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -211,6 +231,16 @@
 <dt id="src.Game.Map.MapObject.WinZone">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.MapObject.</span></code><code class="sig-name descname"><span class="pre">WinZone</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">passable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.MapObject.WinZone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.Map.MapObject.MapObject" title="src.Game.Map.MapObject.MapObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.Map.MapObject.MapObject</span></code></a></p>
+<p>Colliding with this object causes next level to be loaded by <cite>MapState</cite></p>
+<p>Otherwise, causes game <cite>WinState</cite> to be loaded</p>
+<dl class="py method">
+<dt id="src.Game.Map.MapObject.WinZone.collide">
+<code class="sig-name descname"><span class="pre">collide</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.MapObject.WinZone.collide" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by map when something collides with this
+:param map_object: the colliding object
+:type map_object: class Map.MapObject</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>

@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../index.html">API Reference</a></li>
 </ul>
@@ -158,7 +161,8 @@
             
   <section id="module-src.Game.Map.Map">
 <span id="src-game-map-map"></span><h1><a class="reference internal" href="#module-src.Game.Map.Map" title="src.Game.Map.Map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.Map.Map</span></code></a><a class="headerlink" href="#module-src.Game.Map.Map" title="Permalink to this headline">¶</a></h1>
-<p>Holds the larger game map</p>
+<p>Holds the game map, whether win has been reached, or whether a lose condition has been triggered.</p>
+<p>Handles <cite>MapObjects</cite> that desire to move.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -226,14 +230,20 @@
 
 <dl class="py class">
 <dt id="src.Game.Map.Map.MapSquare">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Map.</span></code><code class="sig-name descname"><span class="pre">MapSquare</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Map.MapSquare" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Map.</span></code><code class="sig-name descname"><span class="pre">MapSquare</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">character</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Map.MapSquare" title="Permalink to this definition">¶</a></dt>
 <dd><p>A map square.</p>
 <p>Holds its x and y value, a MapTile object, and an object</p>
-<p>If object is equal to 0, there is no object.
-:param x: The x-coordinate on the map this square exists
-:param y: The y-coordinate on the map this square exists
-:param tile_class: A tile to initialize on the square
-:type tile_class: Class Object</p>
+<p>If object is equal to 0, there is no object.</p>
+<p>Passed the actual class of Tile, not a tile instance. Initializes Tile itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – The x-coordinate on the map this square exists</p></li>
+<li><p><strong>y</strong> – The y-coordinate on the map this square exists</p></li>
+<li><p><strong>tile_class</strong> (<em>class Class extends Map.Tile</em>) – A tile to initialize on the square</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="src.Game.Map.Map.MapSquare.collide">
 <code class="sig-name descname"><span class="pre">collide</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Map.MapSquare.collide" title="Permalink to this definition">¶</a></dt>
@@ -249,7 +259,9 @@ Checks if anything in this square makes it not passable. If not passable, return
 <dl class="py method">
 <dt id="src.Game.Map.Map.MapSquare.get_display_object">
 <code class="sig-name descname"><span class="pre">get_display_object</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Map.MapSquare.get_display_object" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the appropriate object for rendering on a Display</p>
+<dd><p>Gets the appropriate object for rendering on a Display.</p>
+<p>Will be the tile if there are no objects in the square.</p>
+<p>Otherwise, will be the topmost object.</p>
 </dd></dl>
 
 </dd></dl>

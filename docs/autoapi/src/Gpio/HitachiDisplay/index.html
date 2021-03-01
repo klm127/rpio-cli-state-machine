@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
 </ul>
@@ -158,8 +161,11 @@
             
   <section id="module-src.Gpio.HitachiDisplay">
 <span id="src-gpio-hitachidisplay"></span><h1><a class="reference internal" href="#module-src.Gpio.HitachiDisplay" title="src.Gpio.HitachiDisplay"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Gpio.HitachiDisplay</span></code></a><a class="headerlink" href="#module-src.Gpio.HitachiDisplay" title="Permalink to this headline">¶</a></h1>
-<p>Can be passed in as printer object to a Game.Display instance
-For a Hitachi HD44780U to be used to run pirate game</p>
+<p>Can be passed in as printer object to a Game.Display instance</p>
+<p>This class enables an Hitachi HD44780U to be used to run the pirate game. (Or anything else Display is used for)</p>
+<p>Currently running in 4 bit. Soon to be changed to 8-bit.</p>
+<p>Works with I2C protocol.</p>
+<p>To set up, Wire SCL on a Hitachi hat to SCL on the PI. SDA to SDA. Ground to ground and power to 5v.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -171,7 +177,7 @@ For a Hitachi HD44780U to be used to run pirate game</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Gpio.HitachiDisplay.HitachiPrinter" title="src.Gpio.HitachiDisplay.HitachiPrinter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HitachiPrinter</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Wraps functions for interfacing with a Hitachi HD44780 display. Set src.Game.Map.Display.printer to an instance of this object.</p></td>
 </tr>
 </tbody>
 </table>
@@ -233,35 +239,81 @@ For a Hitachi HD44780U to be used to run pirate game</p>
 <dl class="py class">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Gpio.HitachiDisplay.</span></code><code class="sig-name descname"><span class="pre">HitachiPrinter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">39</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>Wraps functions for interfacing with a Hitachi HD44780 display. Set src.Game.Map.Display.printer to an instance of this object.
+:param address: The i2C address of the display
+:type address: int
+:param width: the max characters displayed per line
+:type width: int</p>
+<dl class="py method">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_init">
 <code class="sig-name descname"><span class="pre">lcd_init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_init" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Initializes the LCD with some prior commands</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter.custom_char">
 <code class="sig-name descname"><span class="pre">custom_char</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.custom_char" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Loads three custom characters into the Hitachi CGRAM for char(0), char(1), and char(2).
+char(0) is a stick figure player object
+char(1) is a left half of a pirate face
+char(2) is the right half of a pirate face</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_toggle_enable">
 <code class="sig-name descname"><span class="pre">lcd_toggle_enable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_toggle_enable" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Writes to 4 bits to i2c address</p>
+<p>Not called directly; called by lcd_byte.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bits</strong> (<em>binary</em>) – 4 bits to send</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_byte">
 <code class="sig-name descname"><span class="pre">lcd_byte</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_byte" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Splits 8 bits into 4 bit sections.</p>
+<p>Sends the “high” bit to lcd_toggle_enable first, then the “low” bits.</p>
+<p>Sets mode to mode, 0 for a command, 1 to write data to the Hitachi register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bits</strong> (<em>int</em>) – 8 bits to write</p></li>
+<li><p><strong>mode</strong> (<em>bit</em>) – data or command mode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter.lcd_string">
 <code class="sig-name descname"><span class="pre">lcd_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.lcd_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Splits a string into component characters and sends them to hitachi, writing them on the given line
+Note that only lines 1 and 2 are visible on most displays, and that’s all this game program supports for now.</p>
+<p>Should not be called externally; use print() instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>str</em>) – A string to write on the display</p></li>
+<li><p><strong>line</strong> (<em>int</em>) – The line to write to; use constant LINE_1 or LINE_2.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Gpio.HitachiDisplay.HitachiPrinter.print">
 <code class="sig-name descname"><span class="pre">print</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Gpio.HitachiDisplay.HitachiPrinter.print" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Called by Display to print the current game characters on the display.</p>
+<p>Prints the first array in rows to the top line and the second to the bottom line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rows</strong> (<em>array</em>) – A 2D array of 16 characters each</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

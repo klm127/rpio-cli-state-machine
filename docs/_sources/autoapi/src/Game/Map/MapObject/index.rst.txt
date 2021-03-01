@@ -5,7 +5,7 @@
 
 .. autoapi-nested-parse::
 
-   For objects on the map
+   Objects on the map.
 
    Not a tile; an object that may be placed on a tile.
 
@@ -28,6 +28,13 @@ Classes
 .. class:: MapObject(passable)
 
 
+   General map object, held in an array by a map square which also holds a tile
+
+   Can be passable or not. Has a display object that is returned when it's time to display
+
+   :param passable: whether it can be walked into
+   :type passable: boolean
+
    .. method:: collide(self, map_object)
 
 
@@ -40,7 +47,21 @@ Classes
 
    Bases: :class:`src.Game.Map.MapObject.MapObject`
 
+   When this is touched, the colliding object gets .destroy() called on it
+
+   As of this version, the only object that can move is the player and
+   touching lava causes player to lose the game.
+
+   .. attribute:: alt
+      :annotation: = 1
+
+      
+
    .. method:: collide(self, map_object)
+
+      Calls .destroy() on the map_object which, as of this iteration, will be the player.
+
+      This in turn sets the lose condition on `Map`, causing GameOver at next update.
 
 
 
@@ -48,5 +69,16 @@ Classes
 
 
    Bases: :class:`src.Game.Map.MapObject.MapObject`
+
+   Colliding with this object causes next level to be loaded by `MapState`
+
+   Otherwise, causes game `WinState` to be loaded
+
+   .. method:: collide(self, map_object)
+
+      Called by map when something collides with this
+      :param map_object: the colliding object
+      :type map_object: class Map.MapObject
+
 
 

@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../index.html">API Reference</a></li>
 </ul>
@@ -159,6 +162,8 @@
   <section id="module-src.Game.Map.Tile">
 <span id="src-game-map-tile"></span><h1><a class="reference internal" href="#module-src.Game.Map.Tile" title="src.Game.Map.Tile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.Map.Tile</span></code></a><a class="headerlink" href="#module-src.Game.Map.Tile" title="Permalink to this headline">¶</a></h1>
 <p>Floors and Walls</p>
+<p>Each may or may not be passable and has a display object.</p>
+<p>Part of Map.MapSquare; each MapSquare can have only 1 Tile</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <section id="classes">
@@ -170,20 +175,26 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.Map.Tile.Tile" title="src.Game.Map.Tile.Tile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tile</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A general tile, passable.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#src.Game.Map.Tile.Floor" title="src.Game.Map.Tile.Floor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Floor</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A floor tile, passable.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.Map.Tile.Wall" title="src.Game.Map.Tile.Wall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wall</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A wall tile, impassable</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt id="src.Game.Map.Tile.Tile">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Tile.</span></code><code class="sig-name descname"><span class="pre">Tile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'E'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Tile.Tile" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>A general tile, passable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>char</strong> (<em>char</em>) – The character displayed if no objects also in MapSquare. Default E</p>
+</dd>
+</dl>
+<dl class="py method">
 <dt id="src.Game.Map.Tile.Tile.get_display_object">
 <code class="sig-name descname"><span class="pre">get_display_object</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Tile.Tile.get_display_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -192,14 +203,26 @@
 
 <dl class="py class">
 <dt id="src.Game.Map.Tile.Floor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Tile.</span></code><code class="sig-name descname"><span class="pre">Floor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Tile.Floor" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Tile.</span></code><code class="sig-name descname"><span class="pre">Floor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Tile.Floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.Map.Tile.Tile" title="src.Game.Map.Tile.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.Map.Tile.Tile</span></code></a></p>
+<p>A floor tile, passable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>character</strong> (<em>char</em>) – The char to display. Default ‘:’</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt id="src.Game.Map.Tile.Wall">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Tile.</span></code><code class="sig-name descname"><span class="pre">Wall</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Tile.Wall" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Tile.</span></code><code class="sig-name descname"><span class="pre">Wall</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Tile.Wall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#src.Game.Map.Tile.Tile" title="src.Game.Map.Tile.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.Map.Tile.Tile</span></code></a></p>
+<p>A wall tile, impassable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>character</strong> (<em>char</em>) – The char to display. Default ‘X’</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

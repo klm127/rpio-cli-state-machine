@@ -27,34 +27,91 @@ Classes
 
    Bases: :class:`src.Game.Map.MapObject.MapObject`
 
+   Contains x,y coordinates on the map for the player.
+
+   Depending on whether self.up_down is "down" or "up" and
+   whether self.left_right is "right" or "left", self.viewport
+   will load different "views" of what the player can see.
+
+   :param x: The player x-coordinate on the map.
+   :type x: int
+   :param y: Player y-coordinate on the map.
+   :type y: int
+   :param game_map: The game map
+   :type game_map: class Game.Map.Map
+
    .. method:: get_view(self)
+
+      Gets the viewport for the player. Called by the `MapState` through the `Map`
+      to get what needs to be rendered on the `Display`.
+
+
+   .. method:: destroy(self)
+
+      Called when player touches lava.
+
+      Sets self.game_map.lose to True, causing gameover screen to display on the
+      next state update.
 
 
    .. method:: up_pressed(self)
 
+      Requests a move from map.
+
+      Callback for a Command effect.
+
 
    .. method:: down_pressed(self)
+
+      Requests a move from map.
+
+      Callback for a Command effect.
 
 
    .. method:: left_pressed(self)
 
+      Requests a move from map.
+
+      Callback for a Command effect.
+
 
    .. method:: right_pressed(self)
+
+      Requests a move from map.
+
+      Callback for a Command effect.
 
 
 
 .. class:: Viewport(player)
 
 
+   Assembles a 2x16 array of DisplayObjects based on where the player is
+   on the map and which direction they are looking. Iterates through `MapObjects`
+   that are visible and gets each `DisplayObject`.
+
+   :param player: The player whose view this is
+   :type player: class Player
+
    .. method:: load_view(self)
 
+      Sets the top row and left x based on the direction the player is facing.
 
-   .. method:: load_to_display(self, display)
+      Then fills self.display_array with `DisplayObjects` for visible `MapObjects`.
 
 
-   .. method:: update(self)
+   .. method:: load_to_display(self, display, interval)
 
-      will be used to update animated objects.
+      Loads the array in self.display_array by passing to each `DisplayObject`
+      their x-y coordinates and the Display. The DisplayObjects place a character
+      on the Display according to their logic. Also updates DisplayObjects with
+      the interval that has passed, which may cause some of them to change what
+      character they decide to place.
+
+      :param display: The Display object
+      :type display: class Display
+      :param interval: Time passed since last update
+      :type interval: float
 
 
 

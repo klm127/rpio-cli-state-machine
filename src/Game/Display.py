@@ -1,16 +1,21 @@
 """
-Display is two 28 character lines
+Display is two 16 character lines, held in a 2D array
 
 Display holds the character values at each index
 """
 import os  # for clearing console on console printer
 import sys   # for clearing console on console printer
 
+
 class Display:
     """
     Holds values to display and prints them
 
-    Calls self.printer(rows) to print 2 28 char rows of text with its printer property
+    Calls self.printer(rows) to print 2 16 char rows of text with its printer property
+
+    Starts with space character in each location.
+
+    Starts with a ConsolePrinter as its printer; replace with HitachiDisplay after initialization to use Hitachi
     """
     def __init__(self):
         self.rows = []
@@ -20,6 +25,7 @@ class Display:
                 row.append(' ')
             self.rows.append(row)
         self.printer = ConsolePrinter()
+        self.changed = False
 
     def blank(self):
         """
@@ -35,7 +41,9 @@ class Display:
 
         Printer is set by default to a Console Printer but this can be changed to, for example a printer for a Hitachi HD444780
         """
-        self.printer.print(self.rows)
+        if self.changed:
+            self.printer.print(self.rows)
+        self.changed = False
 
     def change(self, row, column, new):
         """
@@ -49,7 +57,9 @@ class Display:
         :type new: char
         """
         if len(self.rows) > row >= 0 and len(self.rows[0]) > column >= 0:
-            self.rows[row][column] = new
+            if self.rows[row][column] != new:
+                self.rows[row][column] = new
+                self.changed = True
 
 
 class ConsolePrinter:
@@ -67,8 +77,8 @@ class ConsolePrinter:
             for val in range(0, len(row)):
                 row_string += row[val]
             row_string += '\n'
-        # if sys.platform == 'win32':
-        #    os.system('cls')
+        if sys.platform == 'win32':
+            os.system('cls')
         # else:
         #    os.system('clear')
         print(row_string)

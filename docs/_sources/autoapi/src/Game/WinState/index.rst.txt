@@ -1,0 +1,47 @@
+:mod:`src.Game.WinState`
+========================
+
+.. py:module:: src.Game.WinState
+
+.. autoapi-nested-parse::
+
+   The state reached when the final level is beaten
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   src.Game.WinState.Win
+
+
+
+.. class:: Win(program, display)
+
+
+   Bases: :class:`src.Game.GameStates.Game`
+
+   Parent game state.
+
+   Extended by GameStart and MapState
+
+   Updates game objects and, like all states, holds commands to change affect state.
+
+   Sets program.verbose to false
+
+   Also holds a display object, which by default is a Console printer but can be `src.Game.Gpio.HitachiDisplay`
+
+   :param program: The program where this state exists
+   :type program: extends class src.StateMachine.Program.Program
+   :param display: The display where this state will print info
+   :type display: class src.Game.Map.Display
+
+   .. method:: done(self, scroll_text)
+
+
+

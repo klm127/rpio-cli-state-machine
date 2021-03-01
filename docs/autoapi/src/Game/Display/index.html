@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
 </ul>
@@ -158,7 +161,7 @@
             
   <section id="module-src.Game.Display">
 <span id="src-game-display"></span><h1><a class="reference internal" href="#module-src.Game.Display" title="src.Game.Display"><code class="xref py py-mod docutils literal notranslate"><span class="pre">src.Game.Display</span></code></a><a class="headerlink" href="#module-src.Game.Display" title="Permalink to this headline">¶</a></h1>
-<p>Display is two 28 character lines</p>
+<p>Display is two 16 character lines, held in a 2D array</p>
 <p>Display holds the character values at each index</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
@@ -182,7 +185,9 @@
 <dt id="src.Game.Display.Display">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Display.</span></code><code class="sig-name descname"><span class="pre">Display</span></code><a class="headerlink" href="#src.Game.Display.Display" title="Permalink to this definition">¶</a></dt>
 <dd><p>Holds values to display and prints them</p>
-<p>Calls self.printer(rows) to print 2 28 char rows of text with its printer property</p>
+<p>Calls self.printer(rows) to print 2 16 char rows of text with its printer property</p>
+<p>Starts with space character in each location.</p>
+<p>Starts with a ConsolePrinter as its printer; replace with HitachiDisplay after initialization to use Hitachi</p>
 <dl class="py method">
 <dt id="src.Game.Display.Display.blank">
 <code class="sig-name descname"><span class="pre">blank</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Display.Display.blank" title="Permalink to this definition">¶</a></dt>

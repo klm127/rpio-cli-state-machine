@@ -10,7 +10,7 @@
    Holds a list of game objects. Updates them when program tells state to update
    as looping continues.
 
-   Handles keyboard input commands as sent by GameProgram.
+   Handles keyboard input commands as sent by GameProgram - sends to self.Commands to parse
 
 
 
@@ -38,7 +38,18 @@ Classes
 
    Parent game state.
 
-   Updates game objects and holds commands to change features of state.
+   Extended by GameStart and MapState
+
+   Updates game objects and, like all states, holds commands to change affect state.
+
+   Sets program.verbose to false
+
+   Also holds a display object, which by default is a Console printer but can be `src.Game.Gpio.HitachiDisplay`
+
+   :param program: The program where this state exists
+   :type program: extends class src.StateMachine.Program.Program
+   :param display: The display where this state will print info
+   :type display: class src.Game.Map.Display
 
    .. method:: update(self, interval)
 
@@ -52,6 +63,8 @@ Classes
 
    .. method:: end_game(state, inp)
       :staticmethod:
+
+      Calls end_program on state.program, shutting down all threads and ending the program.
 
 
    .. method:: is_key_cb(key_type, key)

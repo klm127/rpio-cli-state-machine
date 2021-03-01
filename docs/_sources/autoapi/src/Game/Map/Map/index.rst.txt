@@ -5,7 +5,9 @@
 
 .. autoapi-nested-parse::
 
-   Holds the larger game map
+   Holds the game map, whether win has been reached, or whether a lose condition has been triggered.
+
+   Handles `MapObjects` that desire to move.
 
 
 
@@ -63,7 +65,7 @@ Classes
 
 
 
-.. class:: MapSquare(x, y, tile_class, char)
+.. class:: MapSquare(x, y, tile_class, character)
 
 
    A map square.
@@ -71,10 +73,13 @@ Classes
    Holds its x and y value, a MapTile object, and an object
 
    If object is equal to 0, there is no object.
+
+   Passed the actual class of Tile, not a tile instance. Initializes Tile itself.
+
    :param x: The x-coordinate on the map this square exists
    :param y: The y-coordinate on the map this square exists
    :param tile_class: A tile to initialize on the square
-   :type tile_class: Class Object
+   :type tile_class: class Class extends Map.Tile
 
    .. method:: collide(self, map_object)
 
@@ -87,7 +92,11 @@ Classes
 
    .. method:: get_display_object(self)
 
-      Gets the appropriate object for rendering on a Display
+      Gets the appropriate object for rendering on a Display.
+
+      Will be the tile if there are no objects in the square.
+
+      Otherwise, will be the topmost object.
 
 
 

@@ -2,6 +2,8 @@
 Handles game loops, key presses, and shutting down.
 
 Holds the active state.
+
+Tells state to update whenever its frame rate time passes
 """
 
 from src.StateMachine import Commands, Program, States

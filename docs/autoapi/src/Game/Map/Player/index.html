@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../index.html">API Reference</a></li>
 </ul>
@@ -170,10 +173,10 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#src.Game.Map.Player.Player" title="src.Game.Map.Player.Player"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Player</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Contains x,y coordinates on the map for the player.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#src.Game.Map.Player.Viewport" title="src.Game.Map.Player.Viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Viewport</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Assembles a 2x16 array of DisplayObjects based on where the player is</p></td>
 </tr>
 </tbody>
 </table>
@@ -181,50 +184,98 @@
 <dt id="src.Game.Map.Player.Player">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Player.</span></code><code class="sig-name descname"><span class="pre">Player</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../MapObject/index.html#src.Game.Map.MapObject.MapObject" title="src.Game.Map.MapObject.MapObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.Game.Map.MapObject.MapObject</span></code></a></p>
+<p>Contains x,y coordinates on the map for the player.</p>
+<p>Depending on whether self.up_down is “down” or “up” and
+whether self.left_right is “right” or “left”, self.viewport
+will load different “views” of what the player can see.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – The player x-coordinate on the map.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Player y-coordinate on the map.</p></li>
+<li><p><strong>game_map</strong> (<em>class Game.Map.Map</em>) – The game map</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="src.Game.Map.Player.Player.get_view">
 <code class="sig-name descname"><span class="pre">get_view</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player.get_view" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Gets the viewport for the player. Called by the <cite>MapState</cite> through the <cite>Map</cite>
+to get what needs to be rendered on the <cite>Display</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.Game.Map.Player.Player.destroy">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when player touches lava.</p>
+<p>Sets self.game_map.lose to True, causing gameover screen to display on the
+next state update.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.Map.Player.Player.up_pressed">
 <code class="sig-name descname"><span class="pre">up_pressed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player.up_pressed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Requests a move from map.</p>
+<p>Callback for a Command effect.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.Map.Player.Player.down_pressed">
 <code class="sig-name descname"><span class="pre">down_pressed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player.down_pressed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Requests a move from map.</p>
+<p>Callback for a Command effect.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.Map.Player.Player.left_pressed">
 <code class="sig-name descname"><span class="pre">left_pressed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player.left_pressed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Requests a move from map.</p>
+<p>Callback for a Command effect.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.Map.Player.Player.right_pressed">
 <code class="sig-name descname"><span class="pre">right_pressed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Player.right_pressed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Requests a move from map.</p>
+<p>Callback for a Command effect.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="src.Game.Map.Player.Viewport">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.Game.Map.Player.</span></code><code class="sig-name descname"><span class="pre">Viewport</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Viewport" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>Assembles a 2x16 array of DisplayObjects based on where the player is
+on the map and which direction they are looking. Iterates through <cite>MapObjects</cite>
+that are visible and gets each <cite>DisplayObject</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>player</strong> (<em>class Player</em>) – The player whose view this is</p>
+</dd>
+</dl>
+<dl class="py method">
 <dt id="src.Game.Map.Player.Viewport.load_view">
 <code class="sig-name descname"><span class="pre">load_view</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Viewport.load_view" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the top row and left x based on the direction the player is facing.</p>
+<p>Then fills self.display_array with <cite>DisplayObjects</cite> for visible <cite>MapObjects</cite>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="src.Game.Map.Player.Viewport.load_to_display">
-<code class="sig-name descname"><span class="pre">load_to_display</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Viewport.load_to_display" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="src.Game.Map.Player.Viewport.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Viewport.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>will be used to update animated objects.</p>
+<code class="sig-name descname"><span class="pre">load_to_display</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.Map.Player.Viewport.load_to_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the array in self.display_array by passing to each <cite>DisplayObject</cite>
+their x-y coordinates and the Display. The DisplayObjects place a character
+on the Display according to their logic. Also updates DisplayObjects with
+the interval that has passed, which may cause some of them to change what
+character they decide to place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>display</strong> (<em>class Display</em>) – The Display object</p></li>
+<li><p><strong>interval</strong> (<em>float</em>) – Time passed since last update</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

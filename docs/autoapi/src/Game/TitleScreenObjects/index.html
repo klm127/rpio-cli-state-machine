@@ -86,7 +86,10 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateMachine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gpio.html">Gpio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage - StateMachine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../umlDiagram.html">Uml Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
 </ul>
@@ -223,8 +226,17 @@
 <dl class="py method">
 <dt id="src.Game.TitleScreenObjects.Spinner.change">
 <code class="sig-name descname"><span class="pre">change</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Game.TitleScreenObjects.Spinner.change" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to be overwritten.</p>
-<p>Changes the object in some way if the interval has passed.</p>
+<dd><p>Overwrites method of GameObject.AnimatedObject.</p>
+<p><cite>AnimatedObject.update</cite> calls <cite>AnimatedObject.change</cite> with the amount.</p>
+<p>“spins” the character array into the next frame if it’s time has elapsed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>GameState</em>) – The game state</p></li>
+<li><p><strong>amount</strong> (<em>int</em>) – The number of changes that have occurred</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

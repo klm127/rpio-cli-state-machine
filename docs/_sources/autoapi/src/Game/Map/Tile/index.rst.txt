@@ -7,6 +7,10 @@
 
    Floors and Walls
 
+   Each may or may not be passable and has a display object.
+
+   Part of Map.MapSquare; each MapSquare can have only 1 Tile
+
 
 
 Module Contents
@@ -26,19 +30,34 @@ Classes
 .. class:: Tile(char='E')
 
 
+   A general tile, passable.
+
+   :param char: The character displayed if no objects also in MapSquare. Default E
+   :type char: char
+
    .. method:: get_display_object(self)
 
 
 
-.. class:: Floor(char=':')
+.. class:: Floor(character=':')
 
 
    Bases: :class:`src.Game.Map.Tile.Tile`
 
+   A floor tile, passable.
 
-.. class:: Wall(char='X')
+   :param character: The char to display. Default ':'
+   :type character: char
+
+
+.. class:: Wall(character='X')
 
 
    Bases: :class:`src.Game.Map.Tile.Tile`
+
+   A wall tile, impassable
+
+   :param character: The char to display. Default 'X'
+   :type character: char
 
 
